@@ -1,0 +1,1 @@
+Change Project Name in ProjectSettings\ProjectSettings.asset (Attention: replace not Rename!)
