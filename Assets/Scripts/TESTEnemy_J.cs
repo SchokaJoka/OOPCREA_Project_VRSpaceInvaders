@@ -25,12 +25,12 @@ public class TestEnemy_J : EnemyArmy
         // Check if it's time to shoot
         if (shootTimer >= shootInterval)
         {
-            fireProjectile();
+            FireProjectile();
             shootTimer = 0f; // Reset the timer
         }
     }
     
-    public void fireProjectile()
+    public void FireProjectile()
     {
         Vector3 spawnPos = transform.position + transform.forward * -1.5f;
         Instantiate(enemyProjectilePrefab, spawnPos, Quaternion.identity);

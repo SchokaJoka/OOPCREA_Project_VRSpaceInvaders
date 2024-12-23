@@ -27,20 +27,20 @@ public class PlayerShip : MonoBehaviour, IDamageable
     }
     void Update()
     {
-        playerMovement();
+        PlayerMovement();
     }
     
-    void playerMovement()
+    void PlayerMovement()
     {
         horizontalInput = Input.GetAxis("Horizontal");
         transform.Translate(Vector2.right * horizontalInput * playerSpeed * Time.deltaTime);
         
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            fireProjectile();
+            FireProjectile();
         }
     }
-    void fireProjectile()
+    void FireProjectile()
     {
         Vector3 spawnPos = transform.position + transform.forward * 1.5f;
         Instantiate(projectilePrefab, spawnPos, Quaternion.identity);

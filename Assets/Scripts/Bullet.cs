@@ -24,7 +24,6 @@ public class Bullet : MonoBehaviour
         if (other.gameObject.TryGetComponent(out IDamageable damageable))
         {
             Debug.Log("Found IDamageable in " + other.gameObject.name);
-            // The GameObject has an IDamageable component.
             damageable.OnHit();
             Destroy(gameObject);
         }
