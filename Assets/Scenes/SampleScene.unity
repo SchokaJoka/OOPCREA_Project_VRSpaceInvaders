@@ -986,6 +986,10 @@ PrefabInstance:
       propertyPath: m_Constraints
       value: 32
       objectReference: {fileID: 0}
+    - target: {fileID: 2379912787606882526, guid: 8be4b1f6e8156462eb1e44a56a98e25a, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8863279375480362538, guid: 8be4b1f6e8156462eb1e44a56a98e25a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

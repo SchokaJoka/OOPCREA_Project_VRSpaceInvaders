@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
@@ -16,6 +17,17 @@ public class Bullet : MonoBehaviour
     void Update()
     {
         transform.Translate(0.0f, 0.0f, moveSpeed * Time.deltaTime);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("Collision with " + other.gameObject.name);
+        if (other.gameObject.TryGetComponent(out IDamageable damageable))
+        {
+            Debug.Log("Found IDamageable in " + other.gameObject.name);
+            // The GameObject has an IDamageable component.
+            damageable.OnHit(damageAmount);
+        }
     }
     
 }
