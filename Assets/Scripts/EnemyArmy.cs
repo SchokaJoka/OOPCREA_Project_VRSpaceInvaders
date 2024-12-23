@@ -4,17 +4,12 @@ using UnityEngine;
 
 public class EnemyArmy : MonoBehaviour, IDamageable
 {
-    private float health = 100f;
+    //private float health = 100f;
     
-    public void OnHit(float damage)
+    public void OnHit()
     {
-        health -= damage;
-        if (health <= 0)
-        {
-            Destroy(gameObject);
-            Debug.Log("Object destroyed");
-        }
-        Debug.Log("OnHit succesfull");
+        Destroy(gameObject);
+        Debug.Log("Object destroyed");
     }
     
 }

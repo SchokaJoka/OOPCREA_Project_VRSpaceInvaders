@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class TESTBulletJ : MonoBehaviour
 {
-    public float damageAmount = 25f;
-    public float moveSpeed = 30f;
+
+    public float moveSpeed = 30f; 
+    public Vector3 moveDirection = Vector3.forward; // Default direction is upwards
     public float lifeTime = 5.0f;
     
     void Start()
@@ -15,7 +16,7 @@ public class Bullet : MonoBehaviour
     }
     void Update()
     {
-        transform.Translate(0.0f, 0.0f, moveSpeed * Time.deltaTime);
+        transform.Translate(Time.deltaTime * moveDirection * moveSpeed);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -23,6 +24,7 @@ public class Bullet : MonoBehaviour
         Debug.Log("Collision with " + other.gameObject.name);
         if (other.gameObject.TryGetComponent(out IDamageable damageable))
         {
+            
             Debug.Log("Found IDamageable in " + other.gameObject.name);
             // The GameObject has an IDamageable component.
             damageable.OnHit();
