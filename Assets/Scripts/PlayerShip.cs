@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 
-public class PlayerShip : MonoBehaviour
+public class PlayerShip : MonoBehaviour, IDamageable
 {
     public float playerSpeed = 10f;
     public float horizontalInput;
@@ -12,6 +12,11 @@ public class PlayerShip : MonoBehaviour
     
     public GameObject projectilePrefab;
 
+    void Update()
+    {
+        playerMovement();
+    }
+    
     void playerMovement()
     {
         horizontalInput = Input.GetAxis("Horizontal");
@@ -27,14 +32,14 @@ public class PlayerShip : MonoBehaviour
     }
     void fireProjectile()
     {
-        Vector3 spawnPos = transform.position + transform.forward * 1.0f;
+        Vector3 spawnPos = transform.position + transform.forward * 1.5f;
         Instantiate(projectilePrefab, spawnPos, Quaternion.identity);
         //Instantiate(projectilePrefab, transform.position, Quaternion.identity);
     }
-    
-    void Update()
+
+    public void OnHit(float damage)
     {
-        playerMovement();
+        Debug.Log("Player took damage");
     }
 }
 

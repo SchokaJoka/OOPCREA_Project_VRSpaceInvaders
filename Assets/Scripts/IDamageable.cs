@@ -1,9 +1,8 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SmallEnemy : EnemyArmy
+public interface IDamageable
 {
-
+    public void OnHit(float damage);
 }
