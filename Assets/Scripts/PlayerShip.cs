@@ -13,22 +13,26 @@ public class PlayerShip : MonoBehaviour, IDamageable
     public int currentPlayerLifes;
     
     public ScoreDisplay scoreDisplay;
+    public PlayerHealthDisplay playerHealthDisplay;
     
     public GameObject projectilePrefab;
     
-    // Array of health objects in the 3D world (instead of UI Images)
-    public GameObject[] healthObjects = new GameObject[3]; // Array with 3 slots
-
-    // Material or color for full health and empty health
-    public Material fullHealthMaterial; // Material for full health
-    public Material emptyHealthMaterial; // Material for empty health
-    
     void Start()
     {
-        currentPlayerLifes = maxPlayerLifes;
-        UpdateHealthDisplay();
-        
         scoreDisplay = FindObjectOfType<ScoreDisplay>();
+        playerHealthDisplay = FindObjectOfType<PlayerHealthDisplay>();
+        
+        if (!scoreDisplay)
+        {
+            Debug.LogError("PlayerShip.cs: scoreDisplay Not Found");
+        }
+        if (!playerHealthDisplay)
+        {
+            Debug.LogError("PlayerShip.cs: PlayerHealthDisplay Not Found");
+        }
+        
+        currentPlayerLifes = maxPlayerLifes;
+        playerHealthDisplay.UpdateHealthDisplay();
     }
     void Update()
     {
@@ -55,7 +59,7 @@ public class PlayerShip : MonoBehaviour, IDamageable
     {
         Debug.Log("Player took damage");
         currentPlayerLifes--;
-        UpdateHealthDisplay();
+        playerHealthDisplay.UpdateHealthDisplay();
         if (currentPlayerLifes == 0)
         {
             Destroy(gameObject);
@@ -63,46 +67,11 @@ public class PlayerShip : MonoBehaviour, IDamageable
         }
     }
 
-    public void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Octopus"))
-        {
-            scoreDisplay.AddPoints(10);
-            Destroy(other.gameObject);
-        }
-        else if (other.CompareTag("Crab"))
-        {
-            scoreDisplay.AddPoints(20);
-            Destroy(other.gameObject);
-        }
-        else if (other.CompareTag("Squid"))
-        {
-            scoreDisplay.AddPoints(30);
-            Destroy(other.gameObject);
-        }
 
-        if (other.CompareTag("Octopus") || other.CompareTag("Crab") || other.CompareTag("Squid"))
-        {
-            Destroy(gameObject);
-        }
-    }
 
-    void UpdateHealthDisplay()
+    public int GetCurrentPlayerLifes()
     {
-        // Loop through the health objects and update their appearance based on current lives
-        for (int i = 0; i < healthObjects.Length; i++)
-        {
-            if (i < currentPlayerLifes)
-            {
-                // Set material or enable the object for full health
-                healthObjects[i].GetComponent<Renderer>().material = fullHealthMaterial;
-            }
-            else
-            {
-                // Set material or disable the object for empty health
-                healthObjects[i].GetComponent<Renderer>().material = emptyHealthMaterial;
-            }
-        }
+        return currentPlayerLifes;
     }
 }
 

@@ -294,7 +294,7 @@ GameObject:
   - component: {fileID: 419987763}
   - component: {fileID: 419987762}
   m_Layer: 0
-  m_Name: Plane
+  m_Name: HealthIcon1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -525,7 +525,7 @@ GameObject:
   - component: {fileID: 902762904}
   - component: {fileID: 902762903}
   m_Layer: 0
-  m_Name: Plane (2)
+  m_Name: HealthIcon3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1197,7 +1197,7 @@ GameObject:
   - component: {fileID: 1338707455}
   - component: {fileID: 1338707454}
   m_Layer: 0
-  m_Name: Plane (1)
+  m_Name: HealthIcon2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1494,8 +1494,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2081536194}
+  - component: {fileID: 2081536195}
   m_Layer: 0
-  m_Name: HealtImages
+  m_Name: PlayerHealthDisplay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1519,6 +1520,25 @@ Transform:
   - {fileID: 902762902}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2081536195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2081536193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bd460ef2b8b7154fb5eb462e1565cea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthObjects:
+  - {fileID: 419987760}
+  - {fileID: 1338707452}
+  - {fileID: 902762901}
+  fullHealthMaterial: {fileID: 2100000, guid: 4af8f4540e9d89841ab543ed539d845d, type: 2}
+  emptyHealthMaterial: {fileID: 2100000, guid: a89603ceef578a946b36a29f0c8f9fde, type: 2}
+  playerShip: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
