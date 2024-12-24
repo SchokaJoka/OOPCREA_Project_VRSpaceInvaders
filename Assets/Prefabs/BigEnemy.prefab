@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 615533104255385435}
   m_Layer: 0
   m_Name: BigEnemy
-  m_TagString: Enemy
+  m_TagString: Octopus
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

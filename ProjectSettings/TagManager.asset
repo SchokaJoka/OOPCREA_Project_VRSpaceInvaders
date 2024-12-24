@@ -7,6 +7,9 @@ TagManager:
   - Bullet
   - Border
   - Enemy
+  - Octopus
+  - Crab
+  - Squid
   layers:
   - Default
   - TransparentFX

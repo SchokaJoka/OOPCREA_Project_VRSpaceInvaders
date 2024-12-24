@@ -12,6 +12,8 @@ public class PlayerShip : MonoBehaviour, IDamageable
     public int maxPlayerLifes = 3;
     public int currentPlayerLifes;
     
+    public ScoreDisplay scoreDisplay;
+    
     public GameObject projectilePrefab;
     
     // Array of health objects in the 3D world (instead of UI Images)
@@ -25,6 +27,8 @@ public class PlayerShip : MonoBehaviour, IDamageable
     {
         currentPlayerLifes = maxPlayerLifes;
         UpdateHealthDisplay();
+        
+        scoreDisplay = FindObjectOfType<ScoreDisplay>();
     }
     void Update()
     {
@@ -61,7 +65,23 @@ public class PlayerShip : MonoBehaviour, IDamageable
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Enemy"))
+        if (other.CompareTag("Octopus"))
+        {
+            scoreDisplay.AddPoints(10);
+            Destroy(other.gameObject);
+        }
+        else if (other.CompareTag("Crab"))
+        {
+            scoreDisplay.AddPoints(20);
+            Destroy(other.gameObject);
+        }
+        else if (other.CompareTag("Squid"))
+        {
+            scoreDisplay.AddPoints(30);
+            Destroy(other.gameObject);
+        }
+
+        if (other.CompareTag("Octopus") || other.CompareTag("Crab") || other.CompareTag("Squid"))
         {
             Destroy(gameObject);
         }
