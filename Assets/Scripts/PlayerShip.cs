@@ -1,3 +1,4 @@
+using System;
 using System.Collections;   
 using System.Collections.Generic;
 using UnityEngine;
@@ -44,7 +45,6 @@ public class PlayerShip : MonoBehaviour, IDamageable
     {
         Vector3 spawnPos = transform.position + transform.forward * 1.5f;
         Instantiate(projectilePrefab, spawnPos, Quaternion.identity);
-        //Instantiate(projectilePrefab, transform.position, Quaternion.identity);
     }
 
     public void OnHit()
@@ -57,10 +57,16 @@ public class PlayerShip : MonoBehaviour, IDamageable
             Destroy(gameObject);
             Debug.Log("Game Over");
         }
-        
-        
     }
-    
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            Destroy(gameObject);
+        }
+    }
+
     void UpdateHealthDisplay()
     {
         // Loop through the health objects and update their appearance based on current lives
