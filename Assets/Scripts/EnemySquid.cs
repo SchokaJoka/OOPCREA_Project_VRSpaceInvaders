@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemySquid : EnemyArmy, IDamageable
 {
     public ScoreDisplay scoreDisplay;
+    private bool isDestroyed = false;
     
     // Start is called before the first frame update
     void Start()
@@ -24,8 +25,14 @@ public class EnemySquid : EnemyArmy, IDamageable
 
     public void OnHit()
     {
+        if (isDestroyed)
+        {
+            return;
+        }
+        isDestroyed = true;
         Debug.Log("SQUID: Object destroyed");
         Destroy(gameObject);
         scoreDisplay.AddPoints(30);
+        GameSceneManager.Instance.CheckAllEnemiesDestroyed();
     }
 }
