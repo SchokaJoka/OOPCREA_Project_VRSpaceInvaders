@@ -33,6 +33,5 @@ public class EnemyCrab : EnemyArmy, IDamageable
         Debug.Log("CRAB: Object destroyed");
         Destroy(gameObject);
         scoreDisplay.AddPoints(20);
-        GameSceneManager.Instance.CheckAllEnemiesDestroyed();
     }
 }

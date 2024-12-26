@@ -33,6 +33,5 @@ public class EnemySquid : EnemyArmy, IDamageable
         Debug.Log("SQUID: Object destroyed");
         Destroy(gameObject);
         scoreDisplay.AddPoints(30);
-        GameSceneManager.Instance.CheckAllEnemiesDestroyed();
     }
 }

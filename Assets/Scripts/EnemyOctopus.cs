@@ -33,6 +33,5 @@ public class EnemyOctopus : EnemyArmy, IDamageable
         Debug.Log("OCTOPUS: Object destroyed");
         Destroy(gameObject);
         scoreDisplay.AddPoints(10);
-        GameSceneManager.Instance.CheckAllEnemiesDestroyed();
     }
 }
