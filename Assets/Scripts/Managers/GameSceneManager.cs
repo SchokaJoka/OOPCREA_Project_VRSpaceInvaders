@@ -5,6 +5,8 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using System.Linq;
+//using Meta.XR.ImmersiveDebugger.UserInterface.Generic;
+using UnityEngine.UI;
 
 public class GameSceneManager : MonoBehaviour
 {
@@ -14,6 +16,8 @@ public class GameSceneManager : MonoBehaviour
     private readonly string MAIN_SCENE = "Main";
     private readonly string GAME_OVER_SCENE = "GameOver";
     private readonly string WIN_SCENE = "Win";
+
+    public Button playButton;
 
     public void Awake()
     {
@@ -30,6 +34,14 @@ public class GameSceneManager : MonoBehaviour
         if (currentScene != START_SCENE)
         {
             SceneManager.LoadScene(START_SCENE, LoadSceneMode.Single);
+        }
+    }
+    
+    private void Start()
+    {
+        if (playButton != null)
+        {
+            playButton.onClick.AddListener(LoadMainScene);
         }
     }
 
