@@ -5,17 +5,25 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    public float moveDistance = 1f;
-    public float moveDownDistance = 1f;
-    public float moveInterval = 0.5f;
+    private float moveDistance = 1f;
+    private float moveDownDistance = 1f;
+    private float moveInterval = 1f;
+    public float startDelay;
     
     private bool movingRight = true;
     
     void Start()
     {
-        StartCoroutine(MoveRoutine());
+        StartCoroutine(StartDelayRoutine());
     }
 
+
+    IEnumerator StartDelayRoutine()
+    {
+        yield return new WaitForSeconds(startDelay);
+        StartCoroutine(MoveRoutine());
+    }
+    
     IEnumerator MoveRoutine()
     {
         while (true)
@@ -37,12 +45,17 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
+    public void OnWallHit()
+    {
+        transform.Translate(Vector3.back * moveDownDistance);
+        movingRight = !movingRight;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Border"))
+        if (other.CompareTag("Player"))
         {
-            movingRight = !movingRight;
-            transform.Translate(Vector3.back * moveDownDistance);
+            
         }
     }
 }

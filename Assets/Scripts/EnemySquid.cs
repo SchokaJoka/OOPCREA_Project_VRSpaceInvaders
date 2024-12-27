@@ -4,23 +4,11 @@ using UnityEngine;
 
 public class EnemySquid : EnemyArmy, IDamageable
 {
-    public ScoreDisplay scoreDisplay;
-    private bool isDestroyed = false;
     
     // Start is called before the first frame update
     void Start()
     {
-        scoreDisplay = FindObjectOfType<ScoreDisplay>();
-        if (!scoreDisplay)
-        {
-            Debug.LogError("PlayerShip.cs: scoreDisplay Not Found");
-        }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        CheckComponents();
     }
 
     public void OnHit()
@@ -32,6 +20,6 @@ public class EnemySquid : EnemyArmy, IDamageable
         isDestroyed = true;
         Debug.Log("SQUID: Object destroyed");
         Destroy(gameObject);
-        scoreDisplay.AddPoints(30);
+        // scoreDisplay.AddPoints(30);
     }
 }

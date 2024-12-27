@@ -10,7 +10,7 @@ public class Bullet : MonoBehaviour
     
     void Start()
     {
-        Destroy(gameObject, lifeTime); // Can be changed, with a Box collider at the top of the screen, just a temp solution
+        
     }
     void Update()
     {
@@ -19,12 +19,14 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Collision with " + other.gameObject.name);
+        Debug.Log("Bullet.cs Collision with " + other.gameObject.name);
         if (other.gameObject.TryGetComponent(out IDamageable damageable))
         {
-            Debug.Log("Found IDamageable in " + other.gameObject.name);
-            damageable.OnHit();
             Destroy(gameObject);
+            Debug.Log("Bullet.cs Found IDamageable in " + other.gameObject.name);
+            damageable.OnHit();
+            
+            Debug.Log("Bullet.cs TESTESTES");
         }
     }
     
