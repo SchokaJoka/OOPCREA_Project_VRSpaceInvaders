@@ -1190,7 +1190,7 @@ Transform:
   m_GameObject: {fileID: 416689387}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.24312246, y: 2.0217943, z: 3.495132}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3356,7 +3356,7 @@ Transform:
   m_GameObject: {fileID: 1134798579}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 16.112825, y: -54.27265, z: 262.40204}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3615,6 +3615,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: edfdcbbf9db9b4fc9bbee3fb7fc9d00c, type: 3}
+--- !u!1 &1287280979 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7148059705003122636, guid: 8be4b1f6e8156462eb1e44a56a98e25a, type: 3}
+  m_PrefabInstance: {fileID: 1374362613}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1288294088
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3925,6 +3930,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8217422453627828787, guid: 8be4b1f6e8156462eb1e44a56a98e25a, type: 3}
+      propertyPath: ship
+      value: 
+      objectReference: {fileID: 1287280979}
     - target: {fileID: 8661545912282201625, guid: 8be4b1f6e8156462eb1e44a56a98e25a, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -4891,6 +4900,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1735005327}
+  - component: {fileID: 1735005329}
+  - component: {fileID: 1735005328}
   m_Layer: 0
   m_Name: Army
   m_TagString: Enemy
@@ -4918,6 +4929,32 @@ Transform:
   - {fileID: 994327500}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1735005328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1735005326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef93693e07fa144e3a03e280e8dd4376, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  armyMovement: {fileID: 1735005329}
+  enemyMovement: {fileID: 806424723}
+--- !u!114 &1735005329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1735005326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b9a30203791749498709302cb2db517, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1735284842 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 835044159693170865, guid: c65770b8ed3a14d5a97ab63be9ed4503, type: 3}

@@ -8,9 +8,13 @@ using UnityEngine.InputSystem;
 public class PlayerShip : MonoBehaviour, IDamageable
 {
     public float playerSpeed = 10f;
+    private float rotationSpeed = 50f;
     public float horizontalInput;
     public int maxPlayerLifes = 3;
     public int currentPlayerLifes;
+    private Quaternion targetRotation;
+    
+    public GameObject ship;
     
     public ScoreDisplay scoreDisplay;
     public PlayerHealthDisplay playerHealthDisplay;
@@ -19,6 +23,8 @@ public class PlayerShip : MonoBehaviour, IDamageable
     
     void Start()
     {
+        currentPlayerLifes = maxPlayerLifes;
+        playerHealthDisplay.UpdateHealthDisplay();
         scoreDisplay = FindObjectOfType<ScoreDisplay>();
         playerHealthDisplay = FindObjectOfType<PlayerHealthDisplay>();
         
@@ -30,9 +36,11 @@ public class PlayerShip : MonoBehaviour, IDamageable
         {
             Debug.LogError("PlayerShip.cs: PlayerHealthDisplay Not Found");
         }
-        
-        currentPlayerLifes = maxPlayerLifes;
-        playerHealthDisplay.UpdateHealthDisplay();
+
+        if (!ship)
+        {
+            Debug.LogError("PlayerShip.cs: Shipmodel Not Found");
+        }
     }
     void Update()
     {
@@ -42,7 +50,14 @@ public class PlayerShip : MonoBehaviour, IDamageable
     void PlayerMovement()
     {
         horizontalInput = Input.GetAxis("Horizontal");
-        transform.Translate(Vector2.right * horizontalInput * playerSpeed * Time.deltaTime);
+        transform.Translate(horizontalInput * playerSpeed * Time.deltaTime, 0f, 0f);
+        
+        // Define the target rotation
+        targetRotation = Quaternion.Euler(0f, 0f, horizontalInput * -45f);
+
+        // Smoothly rotate towards the target
+        ship.transform.rotation = Quaternion.Slerp(ship.transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
+
         
         if(Input.GetKeyDown(KeyCode.Space))
         {
