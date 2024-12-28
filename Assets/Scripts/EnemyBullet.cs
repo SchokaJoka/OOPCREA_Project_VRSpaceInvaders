@@ -44,6 +44,7 @@ public class EnemyBullet : MonoBehaviour
         {
             // Debug.Log("Found IDamageable in " + other.gameObject.name);
             damageable.OnHit();
+            Destroy(gameObject);
         }
     }
 }
