@@ -68,8 +68,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7b77c5e9a263d84d887c0b49de3655c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 30
-  moveDirection: {x: 0, y: 0, z: 1}
+  moveSpeed: 10
+  moveDirection: {x: 0, y: 0, z: -1}
   lifeTime: 5
   scoreDisplay: {fileID: 0}
 --- !u!1 &7268699551077439186

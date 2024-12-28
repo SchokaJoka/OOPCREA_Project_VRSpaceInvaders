@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 6495322381594848394}
   - component: {fileID: 494928690793786456}
   - component: {fileID: 1103321995746939446}
+  - component: {fileID: 8485811390072711622}
   m_Layer: 0
   m_Name: SmallEnemySquid
   m_TagString: Squid
@@ -179,7 +180,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f5738c42e722194b9ec2c88bbea7601, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreDisplay: {fileID: 0}
+  movement: {fileID: 0}
+--- !u!114 &8485811390072711622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2286005615155879585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccd4bb98612c5284bb6df75998983750, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movement: {fileID: 0}
+  enemyProjectilePrefab: {fileID: 6060983005149107859, guid: a9e0b19bc88c38345bdb5d7cafdcdd23, type: 3}
+  minShootInterval: 0.5
+  maxShootInterval: 1.5
 --- !u!1001 &8646384103054974281
 PrefabInstance:
   m_ObjectHideFlags: 0

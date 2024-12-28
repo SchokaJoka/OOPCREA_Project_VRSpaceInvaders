@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 78968616082683281}
   - component: {fileID: 633477201552122528}
   - component: {fileID: 8473652105288010931}
+  - component: {fileID: 1810888913110510834}
   m_Layer: 0
   m_Name: NormalEnemyCrab
   m_TagString: Crab
@@ -179,7 +180,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c577a319dbc316b47bda14bcc1e490c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreDisplay: {fileID: 0}
+  movement: {fileID: 0}
+--- !u!114 &1810888913110510834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5601450588271111215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccd4bb98612c5284bb6df75998983750, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movement: {fileID: 0}
+  enemyProjectilePrefab: {fileID: 6060983005149107859, guid: a9e0b19bc88c38345bdb5d7cafdcdd23, type: 3}
+  minShootInterval: 0.5
+  maxShootInterval: 1.5
 --- !u!1001 &3549945972518224311
 PrefabInstance:
   m_ObjectHideFlags: 0

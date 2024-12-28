@@ -515,7 +515,7 @@ GameObject:
   - component: {fileID: 94547749}
   m_Layer: 0
   m_Name: EnemyRow2Octopus
-  m_TagString: Untagged
+  m_TagString: Octopus
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -696,6 +696,14 @@ PrefabInstance:
     - target: {fileID: 1419294346694997006, guid: edfdcbbf9db9b4fc9bbee3fb7fc9d00c, type: 3}
       propertyPath: m_Name
       value: BigEnemyOctopus 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8612932728632255526, guid: edfdcbbf9db9b4fc9bbee3fb7fc9d00c, type: 3}
+      propertyPath: maxShootInterval
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8612932728632255526, guid: edfdcbbf9db9b4fc9bbee3fb7fc9d00c, type: 3}
+      propertyPath: minShootInterval
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8852441756683994842, guid: edfdcbbf9db9b4fc9bbee3fb7fc9d00c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1225,6 +1233,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigEnemyOctopus 2
       objectReference: {fileID: 0}
+    - target: {fileID: 8612932728632255526, guid: edfdcbbf9db9b4fc9bbee3fb7fc9d00c, type: 3}
+      propertyPath: shootInterval
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8612932728632255526, guid: edfdcbbf9db9b4fc9bbee3fb7fc9d00c, type: 3}
+      propertyPath: maxShootInterval
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8612932728632255526, guid: edfdcbbf9db9b4fc9bbee3fb7fc9d00c, type: 3}
+      propertyPath: minShootInterval
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8852441756683994842, guid: edfdcbbf9db9b4fc9bbee3fb7fc9d00c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -8
@@ -1663,6 +1683,14 @@ PrefabInstance:
     - target: {fileID: 1419294346694997006, guid: edfdcbbf9db9b4fc9bbee3fb7fc9d00c, type: 3}
       propertyPath: m_Name
       value: BigEnemyOctopus 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8612932728632255526, guid: edfdcbbf9db9b4fc9bbee3fb7fc9d00c, type: 3}
+      propertyPath: maxShootInterval
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8612932728632255526, guid: edfdcbbf9db9b4fc9bbee3fb7fc9d00c, type: 3}
+      propertyPath: minShootInterval
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8852441756683994842, guid: edfdcbbf9db9b4fc9bbee3fb7fc9d00c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2362,7 +2390,7 @@ GameObject:
   - component: {fileID: 806424723}
   m_Layer: 0
   m_Name: EnemyRow1Octopus
-  m_TagString: Untagged
+  m_TagString: Octopus
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2595,7 +2623,7 @@ GameObject:
   - component: {fileID: 915271663}
   m_Layer: 0
   m_Name: EnemyRow1Crab
-  m_TagString: Untagged
+  m_TagString: Crab
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2727,7 +2755,7 @@ GameObject:
   - component: {fileID: 994327501}
   m_Layer: 0
   m_Name: EnemyRow1Squid
-  m_TagString: Untagged
+  m_TagString: Squid
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2852,6 +2880,14 @@ PrefabInstance:
     - target: {fileID: 1419294346694997006, guid: edfdcbbf9db9b4fc9bbee3fb7fc9d00c, type: 3}
       propertyPath: m_Name
       value: BigEnemyOctopus 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8612932728632255526, guid: edfdcbbf9db9b4fc9bbee3fb7fc9d00c, type: 3}
+      propertyPath: maxShootInterval
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8612932728632255526, guid: edfdcbbf9db9b4fc9bbee3fb7fc9d00c, type: 3}
+      propertyPath: minShootInterval
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8852441756683994842, guid: edfdcbbf9db9b4fc9bbee3fb7fc9d00c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3207,7 +3243,7 @@ GameObject:
   - component: {fileID: 1117318594}
   m_Layer: 0
   m_Name: EnemyRow2Crab
-  m_TagString: Untagged
+  m_TagString: Crab
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3382,6 +3418,14 @@ PrefabInstance:
     - target: {fileID: 1419294346694997006, guid: edfdcbbf9db9b4fc9bbee3fb7fc9d00c, type: 3}
       propertyPath: m_Name
       value: BigEnemyOctopus 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8612932728632255526, guid: edfdcbbf9db9b4fc9bbee3fb7fc9d00c, type: 3}
+      propertyPath: maxShootInterval
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8612932728632255526, guid: edfdcbbf9db9b4fc9bbee3fb7fc9d00c, type: 3}
+      propertyPath: minShootInterval
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8852441756683994842, guid: edfdcbbf9db9b4fc9bbee3fb7fc9d00c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4643,6 +4687,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigEnemyOctopus 8
       objectReference: {fileID: 0}
+    - target: {fileID: 8612932728632255526, guid: edfdcbbf9db9b4fc9bbee3fb7fc9d00c, type: 3}
+      propertyPath: maxShootInterval
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8612932728632255526, guid: edfdcbbf9db9b4fc9bbee3fb7fc9d00c, type: 3}
+      propertyPath: minShootInterval
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8852441756683994842, guid: edfdcbbf9db9b4fc9bbee3fb7fc9d00c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4
@@ -4703,6 +4755,14 @@ PrefabInstance:
     - target: {fileID: 1419294346694997006, guid: edfdcbbf9db9b4fc9bbee3fb7fc9d00c, type: 3}
       propertyPath: m_Name
       value: BigEnemyOctopus 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8612932728632255526, guid: edfdcbbf9db9b4fc9bbee3fb7fc9d00c, type: 3}
+      propertyPath: maxShootInterval
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8612932728632255526, guid: edfdcbbf9db9b4fc9bbee3fb7fc9d00c, type: 3}
+      propertyPath: minShootInterval
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8852441756683994842, guid: edfdcbbf9db9b4fc9bbee3fb7fc9d00c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4941,8 +5001,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef93693e07fa144e3a03e280e8dd4376, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  armyMovement: {fileID: 1735005329}
-  enemyMovement: {fileID: 806424723}
+  movement: {fileID: 0}
 --- !u!114 &1735005329
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4975,6 +5034,14 @@ PrefabInstance:
     - target: {fileID: 1419294346694997006, guid: edfdcbbf9db9b4fc9bbee3fb7fc9d00c, type: 3}
       propertyPath: m_Name
       value: BigEnemyOctopus 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8612932728632255526, guid: edfdcbbf9db9b4fc9bbee3fb7fc9d00c, type: 3}
+      propertyPath: maxShootInterval
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8612932728632255526, guid: edfdcbbf9db9b4fc9bbee3fb7fc9d00c, type: 3}
+      propertyPath: minShootInterval
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8852441756683994842, guid: edfdcbbf9db9b4fc9bbee3fb7fc9d00c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5333,6 +5400,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigEnemyOctopus 7
       objectReference: {fileID: 0}
+    - target: {fileID: 8612932728632255526, guid: edfdcbbf9db9b4fc9bbee3fb7fc9d00c, type: 3}
+      propertyPath: maxShootInterval
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8612932728632255526, guid: edfdcbbf9db9b4fc9bbee3fb7fc9d00c, type: 3}
+      propertyPath: minShootInterval
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8852441756683994842, guid: edfdcbbf9db9b4fc9bbee3fb7fc9d00c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2
@@ -5580,6 +5655,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigEnemyOctopus 11
       objectReference: {fileID: 0}
+    - target: {fileID: 8612932728632255526, guid: edfdcbbf9db9b4fc9bbee3fb7fc9d00c, type: 3}
+      propertyPath: maxShootInterval
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8612932728632255526, guid: edfdcbbf9db9b4fc9bbee3fb7fc9d00c, type: 3}
+      propertyPath: minShootInterval
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8852441756683994842, guid: edfdcbbf9db9b4fc9bbee3fb7fc9d00c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 10
@@ -5701,6 +5784,14 @@ PrefabInstance:
     - target: {fileID: 1419294346694997006, guid: edfdcbbf9db9b4fc9bbee3fb7fc9d00c, type: 3}
       propertyPath: m_Name
       value: BigEnemyOctopus 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8612932728632255526, guid: edfdcbbf9db9b4fc9bbee3fb7fc9d00c, type: 3}
+      propertyPath: maxShootInterval
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8612932728632255526, guid: edfdcbbf9db9b4fc9bbee3fb7fc9d00c, type: 3}
+      propertyPath: minShootInterval
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8852441756683994842, guid: edfdcbbf9db9b4fc9bbee3fb7fc9d00c, type: 3}
       propertyPath: m_LocalPosition.x

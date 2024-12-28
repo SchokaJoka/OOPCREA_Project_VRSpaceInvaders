@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 8762434006423646297}
   - component: {fileID: 4336627232175411444}
   - component: {fileID: -69350122456205213}
+  - component: {fileID: 8612932728632255526}
   m_Layer: 0
   m_Name: BigEnemyOctopus
   m_TagString: Octopus
@@ -179,7 +180,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 911e61a36f3f63e4d954e68affff53e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreDisplay: {fileID: 0}
+  movement: {fileID: 0}
+--- !u!114 &8612932728632255526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1419294346694997006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccd4bb98612c5284bb6df75998983750, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movement: {fileID: 0}
+  enemyProjectilePrefab: {fileID: 6060983005149107859, guid: a9e0b19bc88c38345bdb5d7cafdcdd23, type: 3}
+  shootInterval: 1
 --- !u!1001 &212230887129259406
 PrefabInstance:
   m_ObjectHideFlags: 0

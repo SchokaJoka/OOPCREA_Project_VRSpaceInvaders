@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
 
-public class TESTBulletJ : MonoBehaviour
+public class EnemyBullet : MonoBehaviour
 {
 
     public float moveSpeed = 30f; 
@@ -22,7 +22,7 @@ public class TESTBulletJ : MonoBehaviour
             scoreDisplay = FindObjectOfType<ScoreDisplay>();
             if (!scoreDisplay)
             {
-                Debug.LogError("TESTBulletJ.cs: scoreDisplay Not Found");
+                Debug.LogError("EnemyBullet.cs: scoreDisplay Not Found");
             }
         }
     }
@@ -34,6 +34,12 @@ public class TESTBulletJ : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("Collision with " + other.gameObject.name);
+        
+        // Ignore collision with other enemies
+        if (other.gameObject.CompareTag("Octopus") || other.gameObject.CompareTag("Crab") || other.gameObject.CompareTag("Squid"))
+        {
+            return;
+        }
         if (other.gameObject.TryGetComponent(out IDamageable damageable))
         {
             // Debug.Log("Found IDamageable in " + other.gameObject.name);
