@@ -47,13 +47,15 @@ public class EnemyShooter : EnemyArmy
     
     private bool IsEnemyInFront()
     {
-        float rayDistance = 10.0f;
-        float raySpacing = 0.5f; // Adjust this value based on the width of the enemies
+        float rayDistance = 10.0f; // Maximum distance each ray will "travel"
+        float raySpacing = 0.5f; // Space between each ray (to cover a wider area)
         int numberOfRays = 3; // Number of rays to cast
 
         for (int i = -numberOfRays / 2; i <= numberOfRays / 2; i++)
         {
+            // The Origin of each ray (offseting from the enemy' position)
             Vector3 rayOrigin = transform.position + transform.right * i * raySpacing;
+            // Set the direction to move downwards
             Vector3 rayDirection = -transform.forward;
 
             // Draw a debug line to visualize the raycast
@@ -62,9 +64,7 @@ public class EnemyShooter : EnemyArmy
             // Cast a ray forward
             if (Physics.Raycast(rayOrigin, rayDirection, out RaycastHit hit, rayDistance))
             {
-                if (hit.collider.gameObject.CompareTag("Octopus") ||
-                    hit.collider.gameObject.CompareTag("Crab") ||
-                    hit.collider.gameObject.CompareTag("Squid"))
+                if (hit.collider.gameObject.CompareTag("Octopus") || hit.collider.gameObject.CompareTag("Crab") || hit.collider.gameObject.CompareTag("Squid"))
                 {
                     return true; // There's an enemy in front
                 }

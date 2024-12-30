@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using System.Linq;
+using UnityEngine.InputSystem.HID;
 //using Meta.XR.ImmersiveDebugger.UserInterface.Generic;
 using UnityEngine.UI;
 
@@ -16,8 +17,13 @@ public class GameSceneManager : MonoBehaviour
     private readonly string MAIN_SCENE = "Main";
     private readonly string GAME_OVER_SCENE = "GameOver";
     private readonly string WIN_SCENE = "Win";
+    private readonly string CONTROLS_SCENE = "Controls";
+    private readonly string POINT_SYSTEM_SCENE = "PointSystem";
 
     public Button playButton;
+    public Button controlsButton;
+    public Button pointsButton;
+    public Button backButton;
 
     public void Awake()
     {
@@ -30,6 +36,8 @@ public class GameSceneManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
         
+        SceneManager.sceneLoaded += OnSceneLoaded;
+        
         string currentScene = SceneManager.GetActiveScene().name;
         if (currentScene != START_SCENE)
         {
@@ -39,9 +47,53 @@ public class GameSceneManager : MonoBehaviour
     
     private void Start()
     {
-        if (playButton != null)
+        FindPlayButton();
+        FindControlsButton();
+        FindPointSystemButton();
+        FindBackButton();
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name == CONTROLS_SCENE || scene.name == POINT_SYSTEM_SCENE)
+        {
+            FindBackButton();
+        }
+    }
+
+    private void FindPlayButton()
+    {
+        playButton = GameObject.Find("Play").GetComponent<Button>();
+        if (playButton)
         {
             playButton.onClick.AddListener(LoadMainScene);
+        }
+    }
+    
+    private void FindControlsButton()
+    {
+        controlsButton = GameObject.Find("Controls").GetComponent<Button>();
+        if (controlsButton)
+        {
+            controlsButton.onClick.AddListener(LoadControlsScene);
+        }
+    }
+    
+    private void FindPointSystemButton()
+    {
+        pointsButton = GameObject.Find("PointSystem").GetComponent<Button>();
+        if (pointsButton)
+        {
+            pointsButton.onClick.AddListener(LoadPointSystemScene);
+        }
+    }
+    
+    private void FindBackButton()
+    {
+        backButton = GameObject.Find("Back").GetComponent<Button>();
+        if (backButton)
+        {
+            backButton.onClick.AddListener(LoadStartScene);
         }
     }
 
@@ -73,6 +125,21 @@ public class GameSceneManager : MonoBehaviour
     public void LoadWinScene()
     {
         SceneManager.LoadScene(WIN_SCENE, LoadSceneMode.Single);
+    }
+    
+    public void LoadControlsScene()
+    {
+        SceneManager.LoadScene(CONTROLS_SCENE, LoadSceneMode.Single);
+    }
+    
+    public void LoadPointSystemScene()
+    {
+        SceneManager.LoadScene(POINT_SYSTEM_SCENE, LoadSceneMode.Single);
+    }
+    
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
     
 }
