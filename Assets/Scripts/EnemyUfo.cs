@@ -17,4 +17,12 @@ public class EnemyUfo : EnemyArmy, IDamageable
         Destroy(gameObject);
         // Add Score randomizer for UFO
     }
+    
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Border"))
+        {
+            base.OnWallHit();
+        }
+    }
 }

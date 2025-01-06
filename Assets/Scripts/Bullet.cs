@@ -19,14 +19,12 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Bullet.cs Collision with " + other.gameObject.name);
+        // Debug.Log("Bullet.cs Collision with " + other.gameObject.name);
         if (other.gameObject.TryGetComponent(out IDamageable damageable))
         {
+            // Debug.Log("Bullet.cs Found IDamageable in " + other.gameObject.name);
             Destroy(gameObject);
-            Debug.Log("Bullet.cs Found IDamageable in " + other.gameObject.name);
             damageable.OnHit();
-            
-            Debug.Log("Bullet.cs TESTESTES");
         }
     }
     

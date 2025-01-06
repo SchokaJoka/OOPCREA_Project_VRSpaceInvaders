@@ -6,56 +6,42 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     private float moveDistance = 1f;
-    private float moveDownDistance = 1f;
     private float moveInterval = 1f;
+   
     public float startDelay;
+    private bool isAlive = true;
     
-    private bool movingRight = true;
+    public EnemyMovementTop enemyMovementTop;
     
     void Start()
-    {
+    { 
         StartCoroutine(StartDelayRoutine());
     }
-
-
-    IEnumerator StartDelayRoutine()
+    
+    private IEnumerator StartDelayRoutine()
     {
         yield return new WaitForSeconds(startDelay);
         StartCoroutine(MoveRoutine());
     }
     
-    IEnumerator MoveRoutine()
+    private IEnumerator MoveRoutine()
     {
-        while (true)
+        while (isAlive)
         {
             Move();
             yield return new WaitForSeconds(moveInterval);
         }
     }
     
-    void Move()
+    private void Move()
     {
-        if (movingRight)
+        if (enemyMovementTop.movingRight)
         {
             transform.Translate(Vector2.right * moveDistance);
         }
         else
         {
             transform.Translate(Vector2.left * moveDistance);
-        }
-    }
-
-    public void OnWallHit()
-    {
-        transform.Translate(Vector3.back * moveDownDistance);
-        movingRight = !movingRight;
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            
         }
     }
 }

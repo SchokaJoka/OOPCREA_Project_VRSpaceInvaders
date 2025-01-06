@@ -4,14 +4,19 @@ using System.Collections;
 public class Shield : MonoBehaviour, IDamageable
 {
     private float tumble = 0.25f;
-    private int shieldLives = 10;
     [SerializeField]
     private Material material;
-    
+    [SerializeField]
+    private int shieldLives = 10;
+
     void Start()
     {
         GetComponent<Rigidbody>().angularVelocity = Random.insideUnitSphere * tumble;
-        material = GetComponent<MeshRenderer>().material;
+        material = GetComponentInChildren<MeshRenderer>().material;
+        if (!material)
+        {
+            Debug.LogError("Shield.cs: material Not Found");
+        }
     }
 
 

@@ -8,7 +8,7 @@ public class ScoreDisplay : MonoBehaviour
 {
     public static event Action<int> OnScoreChanged;
     
-    public TextMeshProUGUI scoreText;
+    public TextMeshPro scoreText;
     private int playerScore = 0;
     
     void Start()

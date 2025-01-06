@@ -23,11 +23,6 @@ public class PlayerShip : MonoBehaviour, IDamageable
     
     void Start()
     {
-        currentPlayerLifes = maxPlayerLifes;
-        playerHealthDisplay.UpdateHealthDisplay();
-        scoreDisplay = FindObjectOfType<ScoreDisplay>();
-        playerHealthDisplay = FindObjectOfType<PlayerHealthDisplay>();
-        
         if (!scoreDisplay)
         {
             Debug.LogError("PlayerShip.cs: scoreDisplay Not Found");
@@ -41,6 +36,11 @@ public class PlayerShip : MonoBehaviour, IDamageable
         {
             Debug.LogError("PlayerShip.cs: Shipmodel Not Found");
         }
+        
+        currentPlayerLifes = maxPlayerLifes;
+        playerHealthDisplay.UpdateHealthDisplay();
+        scoreDisplay = FindObjectOfType<ScoreDisplay>();
+        playerHealthDisplay = FindObjectOfType<PlayerHealthDisplay>();
     }
     void Update()
     {

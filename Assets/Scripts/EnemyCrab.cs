@@ -22,4 +22,12 @@ public class EnemyCrab : EnemyArmy, IDamageable
         Destroy(gameObject);
         // scoreDisplay.AddPoints(20);
     }
+    
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Border"))
+        {
+            base.OnWallHit();
+        }
+    }
 }

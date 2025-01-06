@@ -28,12 +28,12 @@ public class EnemyBullet : MonoBehaviour
     }
     void Update()
     {
-        transform.Translate(Time.deltaTime * moveDirection * moveSpeed);
+        transform.Translate(moveDirection * (Time.deltaTime * moveSpeed));
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Collision with " + other.gameObject.name);
+        // Debug.Log("Collision with " + other.gameObject.name);
         
         // Ignore collision with other enemies
         if (other.gameObject.CompareTag("Octopus") || other.gameObject.CompareTag("Crab") || other.gameObject.CompareTag("Squid"))
@@ -43,8 +43,8 @@ public class EnemyBullet : MonoBehaviour
         if (other.gameObject.TryGetComponent(out IDamageable damageable))
         {
             // Debug.Log("Found IDamageable in " + other.gameObject.name);
-            damageable.OnHit();
             Destroy(gameObject);
+            damageable.OnHit();
         }
     }
 }

@@ -22,4 +22,12 @@ public class EnemyOctopus : EnemyArmy, IDamageable
         Destroy(gameObject);
         // scoreDisplay.AddPoints(10);
     }
+    
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Border"))
+        {
+            base.OnWallHit();
+        }
+    }
 }

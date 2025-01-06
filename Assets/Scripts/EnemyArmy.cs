@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,17 +6,26 @@ using UnityEngine;
 public class EnemyArmy : MonoBehaviour
 {
     // public ScoreDisplay scoreDisplay;
-    public EnemyMovement movement;
     protected bool isDestroyed = false;
+    public EnemyMovementTop enemyMovementTop;
 
+    void Start()
+    {
+        enemyMovementTop = GetComponent<EnemyMovementTop>();
+        if (!enemyMovementTop)
+        {
+            Debug.LogWarning("EnemyArmy.cs: enemyMovementTop not found!");
+        }
+
+    }
+
+    protected void OnWallHit()
+    {
+        enemyMovementTop.MoveDown();
+    }
     
     public void CheckComponents()
     {
-        if (!movement)
-        {
-            Debug.LogError("EnemyOctopus.cs: EnemyMovement Script Not Found in Parent");
-        }
-        
         /*
         scoreDisplay = GameObject.Find("ScoreDisplay").GetComponent<ScoreDisplay>();
         if (!scoreDisplay)
@@ -25,11 +35,5 @@ public class EnemyArmy : MonoBehaviour
         */
     }
     
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Border"))
-        {
-            movement.OnWallHit();
-        }
-    }
+
 }
