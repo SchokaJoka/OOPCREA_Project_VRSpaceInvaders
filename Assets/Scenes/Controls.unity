@@ -1106,13 +1106,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11500000, guid: f161df269f8aa4b25a2d1e054b2ea2be, type: 3}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 2098200800}
+        m_TargetAssemblyTypeName: GameSceneManager, Assembly-CSharp
+        m_MethodName: LoadStartScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1243,6 +1243,8 @@ MonoBehaviour:
   controlsButton: {fileID: 0}
   pointsButton: {fileID: 0}
   backButton: {fileID: 1978657186}
+  playAgainButton: {fileID: 0}
+  exitButton: {fileID: 0}
 --- !u!4 &2098200801
 Transform:
   m_ObjectHideFlags: 0

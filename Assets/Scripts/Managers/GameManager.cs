@@ -45,7 +45,8 @@ public class GameManager : MonoBehaviour
     {
         if (currentPlayerLifes <= 0)
         {
-            GameSceneManager.Instance.LoadGameOverScene();
+            //GameSceneManager.Instance.LoadGameOverScene();
+            GameSceneManager.Instance.LoadGameOverNewScene();
         }
     }
 }
