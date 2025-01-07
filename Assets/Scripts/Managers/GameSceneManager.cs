@@ -80,7 +80,7 @@ public class GameSceneManager : MonoBehaviour
         {
             FindBackButton();
         }
-        else if (scene.name == GAME_OVER_SCENE || scene.name == WIN_SCENE)
+        else if (scene.name == GAME_OVER_SCENE || scene.name == GAME_OVER_SCENE_NEW || scene.name == WIN_SCENE)
         {
             FindPlayAgainButton();
             FindExitButton();
