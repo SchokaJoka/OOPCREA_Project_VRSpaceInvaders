@@ -17,6 +17,7 @@ public class GameSceneManager : MonoBehaviour
     private readonly string START_SCENE = "Start";
     private readonly string MAIN_SCENE = "Main";
     private readonly string GAME_OVER_SCENE = "GameOver";
+    private readonly string GAME_OVER_SCENE_NEW = "GameOverNew";
     private readonly string WIN_SCENE = "Win";
     private readonly string CONTROLS_SCENE = "Controls";
     private readonly string POINT_SYSTEM_SCENE = "PointSystem";
@@ -25,6 +26,8 @@ public class GameSceneManager : MonoBehaviour
     public Button controlsButton;
     public Button pointsButton;
     public Button backButton;
+    public Button playAgainButton;
+    public Button exitButton;
 
     public void Awake()
     {
@@ -45,20 +48,23 @@ public class GameSceneManager : MonoBehaviour
             SceneManager.LoadScene(START_SCENE, LoadSceneMode.Single);
         }
     }
-    
-    private void Start()
-    {
-        FindPlayButton();
-        FindControlsButton();
-        FindPointSystemButton();
-        FindBackButton();
-    }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (scene.name == CONTROLS_SCENE || scene.name == POINT_SYSTEM_SCENE)
+        if (scene.name == START_SCENE)
+        {
+            FindPlayButton();
+            FindControlsButton();
+            FindPointSystemButton();
+        }
+        else if (scene.name == CONTROLS_SCENE || scene.name == POINT_SYSTEM_SCENE)
         {
             FindBackButton();
+        }
+        else if (scene.name == GAME_OVER_SCENE || scene.name == WIN_SCENE)
+        {
+            FindPlayAgainButton();
+            FindExitButton();
         }
         GameManager.CheckNumbersOfEnemies();
     }
@@ -98,8 +104,25 @@ public class GameSceneManager : MonoBehaviour
             backButton.onClick.AddListener(LoadStartScene);
         }
     }
-
-    // Update is called once per frame
+    
+    private void FindPlayAgainButton()
+    {
+        playAgainButton = GameObject.Find("PlayAgain").GetComponent<Button>();
+        if (playAgainButton)
+        {
+            playAgainButton.onClick.AddListener(LoadMainScene);
+        }
+    }
+    
+    private void FindExitButton()
+    {
+        exitButton = GameObject.Find("Exit").GetComponent<Button>();
+        if (exitButton)
+        {
+            exitButton.onClick.AddListener(LoadStartScene);
+        }
+    }
+    
     void Update()
     {
         string currentScene = SceneManager.GetActiveScene().name;
@@ -124,7 +147,11 @@ public class GameSceneManager : MonoBehaviour
         SceneManager.LoadScene(GAME_OVER_SCENE, LoadSceneMode.Single);
     }
     
-    // Game does only end, when Player Looses (We don't need WinScene)
+    public void LoadGameOverNewScene()
+    {
+        SceneManager.LoadScene(GAME_OVER_SCENE_NEW, LoadSceneMode.Single);
+    }
+    
     public void LoadWinScene()
     {
         SceneManager.LoadScene(WIN_SCENE, LoadSceneMode.Single);
