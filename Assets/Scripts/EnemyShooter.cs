@@ -4,17 +4,18 @@ using UnityEngine;
 
 public class EnemyShooter : MonoBehaviour
 {
-    public GameObject enemyProjectilePrefab;
-    
-    private float minShootInterval = 6f; // Minimum time between shots
-    private float maxShootInterval = 20f; // Maximum time between shots
-    
+    // Variables
+    private float minShootInterval = 6f;
+    private float maxShootInterval = 20f;
     private float shootTimer = 0f;
     private float shootInterval;
     
+    // Components, References
+    public GameObject enemyProjectilePrefab;
+    
+    // Unity
     void Start()
     {
-        //Randomize the shoot interval for each enemy
         shootInterval = Random.Range(minShootInterval, maxShootInterval);
     }
     
@@ -28,13 +29,15 @@ public class EnemyShooter : MonoBehaviour
             if (!IsEnemyInFront())
             {
                 FireProjectile();
-                shootTimer = 0f; // Reset the timer
+                shootTimer = 0f;
+                
                 //Randomize the next shoot interval
                 shootInterval = Random.Range(minShootInterval, maxShootInterval);
             }
         }
     }
     
+    // Methods
     public void FireProjectile()
     {
         Vector3 spawnPos = transform.position + transform.forward * -1.5f;
@@ -42,7 +45,6 @@ public class EnemyShooter : MonoBehaviour
         EnemyBullet bullet = enemyProjectilePrefab.GetComponent<EnemyBullet>();
         bullet.moveDirection = Vector3.back; // Set the direction to move downwards
     }
-    
     private bool IsEnemyInFront()
     {
         float rayDistance = 10.0f; // Maximum distance each ray will "travel"

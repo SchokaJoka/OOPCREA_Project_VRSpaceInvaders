@@ -6,22 +6,36 @@ using TMPro;
 
 public class ScoreDisplay : MonoBehaviour
 {
-    public TextMeshPro scoreText;
+    // Variables
     private int playerScore = 0;
     
+    // Components, References
+    public TextMeshPro scoreText;
+    
+    // Unity
     void Start()
     {
+        // Initializing References, Components
+        CheckComponents();
+        
         UpdateScoreText();
     }
-
+    
+    // Methods
     public void AddPoints (int addPoints)
     {
         playerScore += addPoints;
         UpdateScoreText();
     }
-
-    void UpdateScoreText ()
+    private void UpdateScoreText ()
     {
         scoreText.text = "Score: " + playerScore;
+    }
+    private void CheckComponents()
+    {
+        if (!scoreText)
+        {
+            Debug.LogError("ScoreDisplay.cs: scoreText not found!");
+        }
     }
 }

@@ -4,46 +4,56 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-
 public class PlayerShip : MonoBehaviour, IDamageable
 {
-    public float playerSpeed = 10f;
+    // Variables
+    private float playerSpeed = 10f;
     private float rotationSpeed = 50f;
-    
+    private int maxPlayerLifes = 3;
+    private int tempPlayerLifes;
+    private int currentPlayerLifes;
+   
     public float horizontalInput;
     private Quaternion targetRotation;
     
-    private int maxPlayerLifes = 3;
-    private int currentPlayerLifes;
-   
+    // Components, References
+    public PlayerHealthDisplay playerHealthDisplay;
+    public GameObject projectilePrefab;
     public GameObject ship;
     
-    public PlayerHealthDisplay playerHealthDisplay;
+    // Events
+    public static event Action<int> OnPlayerTookDamage;
     
-    public GameObject projectilePrefab;
-    
-    public static event Action<int> OnHealthChanged;
-    
+    // Unity
     void Start()
     {
-        currentPlayerLifes = maxPlayerLifes;
-        playerHealthDisplay = FindObjectOfType<PlayerHealthDisplay>();
+        // Initializing References
+        CheckComponents();
+
+        if (tempPlayerLifes == 0)
+        {
+            currentPlayerLifes = maxPlayerLifes;
+        }
+        else
+        {
+            currentPlayerLifes = tempPlayerLifes;
+        }
+
         playerHealthDisplay.UpdateHealthDisplay(currentPlayerLifes);
-     
-        if (!playerHealthDisplay)
-        {
-            Debug.LogError("PlayerShip.cs: PlayerHealthDisplay Not Found");
-        }
-        if (!ship)
-        {
-            Debug.LogError("PlayerShip.cs: Shipmodel Not Found");
-        }
     }
     void Update()
     {
         PlayerMovement();
     }
     
+    // IDamageable Interface
+    public void OnHit()
+    {
+        currentPlayerLifes--;
+        OnPlayerTookDamage?.Invoke(currentPlayerLifes);
+    }
+    
+    // Methods
     void PlayerMovement()
     {
         horizontalInput = Input.GetAxis("Horizontal");
@@ -66,27 +76,34 @@ public class PlayerShip : MonoBehaviour, IDamageable
         Vector3 spawnPos = transform.position + transform.forward * 1.5f;
         Instantiate(projectilePrefab, spawnPos, Quaternion.identity);
     }
-
-    public void OnHit()
+    private void CheckComponents()
     {
-        currentPlayerLifes--;
-        OnHealthChanged?.Invoke(currentPlayerLifes);
-        playerHealthDisplay.UpdateHealthDisplay(currentPlayerLifes);
+        playerHealthDisplay = FindObjectOfType<PlayerHealthDisplay>();
         
-        if (currentPlayerLifes <= 0)
+        if (!playerHealthDisplay)
         {
-            Destroy(gameObject);
+            Debug.LogError("PlayerShip.cs: playerHealthDisplay not Found");
+        }
+        if (!ship)
+        {
+            Debug.LogError("PlayerShip.cs: ship not Found");
+        }
+
+        if (!projectilePrefab)
+        {
+            Debug.LogError("PlayerShip.cs: projectilePrefab not found!");
         }
     }
     
+    // Use for Restart Cache (Draft)
     public int GetCurrentPlayerLifes()
     {
         return currentPlayerLifes;
     }
-
-    public int GetMaxPlayerLifes()
+    // Use for restart Cache (Draft)
+    public void SetTempPlayerLifes(int playerLifes)
     {
-        return maxPlayerLifes;
+        tempPlayerLifes = playerLifes;
     }
 }
 

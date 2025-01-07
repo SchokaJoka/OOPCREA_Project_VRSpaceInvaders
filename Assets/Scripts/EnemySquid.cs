@@ -5,15 +5,14 @@ using UnityEngine;
 
 public class EnemySquid : EnemyArmy, IDamageable
 {
-    
-    
-    // Start is called before the first frame update
+    // Unity
     public override void Start()
     {
         base.Start();
         enemyPoints = 30;
     }
     
+    // IDamageable Interface
     public void OnHit()
     {
         if (isDestroyed)

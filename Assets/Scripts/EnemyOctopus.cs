@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class EnemyOctopus : EnemyArmy, IDamageable
 {
-    
-    // Start is called before the first frame update
+    // Unity
     public override void Start()
     {
         base.Start();
         enemyPoints = 10;
     }
     
+    // IDamageable Interface
     public void OnHit()
     {
         if (isDestroyed)
@@ -19,8 +19,7 @@ public class EnemyOctopus : EnemyArmy, IDamageable
             return;
         }
         isDestroyed = true;
-        // Debug.Log("OCTOPUS: Object destroyed");
+        InvokeOnEnemyDied(enemyPoints);
         Destroy(gameObject);
-       scoreDisplay.AddPoints(enemyPoints);
     }
 }

@@ -828,12 +828,12 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 0.55998576, g: 0.563276, b: 0.9811321, a: 1}
+  m_Color: {r: 0.5730687, g: 0.6317086, b: 0.8867924, a: 1}
   m_Intensity: 1
-  m_Range: 10
+  m_Range: 1
   m_SpotAngle: 30
-  m_InnerSpotAngle: 21.80208
-  m_CookieSize: 7.4
+  m_InnerSpotAngle: 1
+  m_CookieSize: 1
   m_Shadows:
     m_Type: 2
     m_Resolution: -1
@@ -887,13 +887,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 284881144}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.38119686, y: -0.30799407, z: 0.13636865, w: 0.8609485}
-  m_LocalPosition: {x: 27.08, y: 14.44, z: -27.88}
+  m_LocalRotation: {x: 0.5357876, y: -0.49934754, z: 0.43648583, w: 0.5225551}
+  m_LocalPosition: {x: 58.6, y: 78.3, z: -13.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 47.764, y: -39.368, z: 0}
+  m_LocalEulerAnglesHint: {x: 84.793, y: -143.372, z: -60.403}
 --- !u!1001 &287157260
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1130,12 +1130,12 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 0.9921569, g: 0.6392157, b: 0.9921569, a: 1}
-  m_Intensity: 1
-  m_Range: 10
-  m_SpotAngle: 30
-  m_InnerSpotAngle: 21.80208
-  m_CookieSize: 7.4
+  m_Color: {r: 0.98823535, g: 0.16078432, b: 0.91372555, a: 1}
+  m_Intensity: 2.5
+  m_Range: 20
+  m_SpotAngle: 22.7
+  m_InnerSpotAngle: 15.9
+  m_CookieSize: 1
   m_Shadows:
     m_Type: 2
     m_Resolution: -1
@@ -1189,13 +1189,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 391825770}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.1400174, y: 0.85990256, z: -0.35337332, w: 0.34071994}
-  m_LocalPosition: {x: -30.51, y: 6.79, z: 38.99}
+  m_LocalRotation: {x: -0.0063334107, y: 0.9295427, z: 0.015984086, w: 0.36831352}
+  m_LocalPosition: {x: -218.11, y: -18.57, z: 223.23}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 44.68, y: 136.77, z: 0}
+  m_LocalEulerAnglesHint: {x: -1.97, y: 136.77, z: 0}
 --- !u!4 &401730325 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8852441756683994842, guid: edfdcbbf9db9b4fc9bbee3fb7fc9d00c, type: 3}
@@ -1315,6 +1315,8 @@ MonoBehaviour:
   controlsButton: {fileID: 0}
   pointsButton: {fileID: 0}
   backButton: {fileID: 0}
+  playAgainButton: {fileID: 0}
+  exitButton: {fileID: 0}
 --- !u!1001 &431197330
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3438,8 +3440,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c706edddc255456593f8f1a54a29a1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerScore: 0
-  playerHealth: 0
 --- !u!4 &1134798581
 Transform:
   m_ObjectHideFlags: 0
@@ -5391,7 +5391,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 100
+  field of view: 98.2
   orthographic: 0
   orthographic size: 5
   m_Depth: 0

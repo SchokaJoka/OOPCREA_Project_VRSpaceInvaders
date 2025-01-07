@@ -3,43 +3,33 @@ using System.Collections;
 
 public class Shield : MonoBehaviour, IDamageable
 {
+    // Variables
     private float tumble = 0.25f;
-    [SerializeField]
-    private Material material;
-    [SerializeField]
     private int shieldLives = 10;
+    private int maxShieldLives;
     
     [SerializeField]
     private Color fullHealthColor = Color.white; // Starting color at full health
     [SerializeField]
     private Color lowHealthColor = Color.red;  // Color when nearly destroyed
+    
+    // Components, References
+    [SerializeField]
+    private Material material;
+    private Rigidbody rigidBody;
 
-    private int maxShieldLives;
-
+    // Unity
     void Start()
     {
-        GetComponent<Rigidbody>().angularVelocity = Random.insideUnitSphere * tumble;
-        material = GetComponentInChildren<MeshRenderer>().material;
-        if (!material)
-        {
-            Debug.LogError("Shield.cs: material Not Found");
-        }
+        // Initializing References, Components
+        CheckComponents(); 
         
         maxShieldLives = shieldLives;
+        AnimateObject();
         UpdateShieldColor();
     }
-
-    private void UpdateShieldColor()
-    {
-        // Calculate the percentage of health remaining
-        float healthPercentage = (float)shieldLives / maxShieldLives;
-        
-        // Lerp between the low health color and full health color based on remaining health
-        Color newColor = Color.Lerp(lowHealthColor, fullHealthColor, healthPercentage);
-        
-        material.color = newColor;
-    }
-
+    
+    // IDamageable Interface
     public void OnHit()
     {
         shieldLives--;
@@ -49,5 +39,30 @@ public class Shield : MonoBehaviour, IDamageable
             return;
         }
         UpdateShieldColor();
+    }
+
+    // Methods
+    private void UpdateShieldColor()
+    {
+        float healthPercentage = (float)shieldLives / maxShieldLives;
+        Color newColor = Color.Lerp(lowHealthColor, fullHealthColor, healthPercentage);
+        material.color = newColor;
+    }
+    private void AnimateObject()
+    { 
+        rigidBody.angularVelocity = Random.insideUnitSphere * tumble;
+    }
+    private void CheckComponents()
+    {
+        if (!rigidBody)
+        {
+            rigidBody = GetComponent<Rigidbody>();
+            if (!rigidBody) Debug.LogError("Shield.cs: rigidBody not found!");
+        }
+        if (!material)
+        {
+            material = GetComponentInChildren<MeshRenderer>().material;
+            if (!material) Debug.LogError("Shield.cs: material not found!");
+        }
     }
 }

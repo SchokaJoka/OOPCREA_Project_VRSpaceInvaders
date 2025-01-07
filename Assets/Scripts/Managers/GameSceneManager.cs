@@ -14,6 +14,7 @@ public class GameSceneManager : MonoBehaviour
 {
     public static GameSceneManager Instance { get; private set; }
     
+    // Variables
     private readonly string START_SCENE = "Start";
     private readonly string MAIN_SCENE = "Main";
     private readonly string GAME_OVER_SCENE = "GameOver";
@@ -22,13 +23,15 @@ public class GameSceneManager : MonoBehaviour
     private readonly string CONTROLS_SCENE = "Controls";
     private readonly string POINT_SYSTEM_SCENE = "PointSystem";
 
+    // Components, References
     public Button playButton;
     public Button controlsButton;
     public Button pointsButton;
     public Button backButton;
     public Button playAgainButton;
     public Button exitButton;
-
+    
+    // Unity
     public void Awake()
     {
         if (Instance && Instance != this)
@@ -48,7 +51,23 @@ public class GameSceneManager : MonoBehaviour
             SceneManager.LoadScene(START_SCENE, LoadSceneMode.Single);
         }
     }
+    
+    void Update()
+    {
+        string currentScene = SceneManager.GetActiveScene().name;
 
+        if (currentScene == START_SCENE && Input.GetKeyDown(KeyCode.Space))
+        {
+            LoadMainScene();
+        }
+    }
+    
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    // Methods
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         if (scene.name == START_SCENE)
@@ -66,9 +85,11 @@ public class GameSceneManager : MonoBehaviour
             FindPlayAgainButton();
             FindExitButton();
         }
-        GameManager.CheckNumbersOfEnemies();
+        else if (scene.name == MAIN_SCENE)
+        {
+            GameManager.CheckNumbersOfEnemies();
+        }
     }
-
     private void FindPlayButton()
     {
         playButton = GameObject.Find("Play").GetComponent<Button>();
@@ -77,7 +98,6 @@ public class GameSceneManager : MonoBehaviour
             playButton.onClick.AddListener(LoadMainScene);
         }
     }
-    
     private void FindControlsButton()
     {
         controlsButton = GameObject.Find("Controls").GetComponent<Button>();
@@ -86,7 +106,6 @@ public class GameSceneManager : MonoBehaviour
             controlsButton.onClick.AddListener(LoadControlsScene);
         }
     }
-    
     private void FindPointSystemButton()
     {
         pointsButton = GameObject.Find("PointSystem").GetComponent<Button>();
@@ -95,7 +114,6 @@ public class GameSceneManager : MonoBehaviour
             pointsButton.onClick.AddListener(LoadPointSystemScene);
         }
     }
-    
     private void FindBackButton()
     {
         backButton = GameObject.Find("Back").GetComponent<Button>();
@@ -104,7 +122,6 @@ public class GameSceneManager : MonoBehaviour
             backButton.onClick.AddListener(LoadStartScene);
         }
     }
-    
     private void FindPlayAgainButton()
     {
         playAgainButton = GameObject.Find("PlayAgain").GetComponent<Button>();
@@ -113,7 +130,6 @@ public class GameSceneManager : MonoBehaviour
             playAgainButton.onClick.AddListener(LoadMainScene);
         }
     }
-    
     private void FindExitButton()
     {
         exitButton = GameObject.Find("Exit").GetComponent<Button>();
@@ -123,16 +139,7 @@ public class GameSceneManager : MonoBehaviour
         }
     }
     
-    void Update()
-    {
-        string currentScene = SceneManager.GetActiveScene().name;
-
-        if (currentScene == START_SCENE && Input.GetKeyDown(KeyCode.Space))
-        {
-            LoadMainScene();
-        }
-    }
-    
+    // Scene Loader Methods
     public void LoadStartScene()
     {
         SceneManager.LoadScene(START_SCENE, LoadSceneMode.Single);
@@ -141,36 +148,25 @@ public class GameSceneManager : MonoBehaviour
     {
         SceneManager.LoadScene(MAIN_SCENE, LoadSceneMode.Single);
     }
-    
     public void LoadGameOverScene()
     {
         SceneManager.LoadScene(GAME_OVER_SCENE, LoadSceneMode.Single);
     }
-    
     public void LoadGameOverNewScene()
     {
         SceneManager.LoadScene(GAME_OVER_SCENE_NEW, LoadSceneMode.Single);
     }
-    
     public void LoadWinScene()
     {
         SceneManager.LoadScene(WIN_SCENE, LoadSceneMode.Single);
     }
-    
     public void LoadControlsScene()
     {
         SceneManager.LoadScene(CONTROLS_SCENE, LoadSceneMode.Single);
     }
-    
     public void LoadPointSystemScene()
     {
         SceneManager.LoadScene(POINT_SYSTEM_SCENE, LoadSceneMode.Single);
     }
-    
-    private void OnDestroy()
-    {
-        SceneManager.sceneLoaded -= OnSceneLoaded;
-    }
-    
 }
 

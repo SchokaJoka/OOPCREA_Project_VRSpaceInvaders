@@ -6,13 +6,15 @@ using UnityEngine.SocialPlatforms.Impl;
 
 public class EnemyBullet : MonoBehaviour
 {
-
+    // Variables
     public float moveSpeed = 30f; 
-    public Vector3 moveDirection = Vector3.forward; // Default direction is upwards
     public float lifeTime = 5.0f;
+    public Vector3 moveDirection = Vector3.forward; // Default direction is upwards
     
+    // Components, References
     public ScoreDisplay scoreDisplay;
     
+    // Unity
     void Start()
     {
         Destroy(gameObject, lifeTime); // Can be changed, with a Box collider at the top of the screen, just a temp solution
@@ -26,15 +28,15 @@ public class EnemyBullet : MonoBehaviour
             }
         }
     }
+    
     void Update()
     {
         transform.Translate(moveDirection * (Time.deltaTime * moveSpeed));
     }
-
+    
+    // Collision handling
     private void OnTriggerEnter(Collider other)
     {
-        // Debug.Log("Collision with " + other.gameObject.name);
-        
         // Ignore collision with other enemies
         if (other.gameObject.CompareTag("Octopus") || other.gameObject.CompareTag("Crab") || other.gameObject.CompareTag("Squid"))
         {
@@ -42,7 +44,6 @@ public class EnemyBullet : MonoBehaviour
         }
         if (other.gameObject.TryGetComponent(out IDamageable damageable))
         {
-            // Debug.Log("Found IDamageable in " + other.gameObject.name);
             Destroy(gameObject);
             damageable.OnHit();
         }

@@ -4,23 +4,22 @@ using UnityEngine;
 
 public class EnemyCrab : EnemyArmy, IDamageable
 {
-    
-    // Start is called before the first frame update
+    // Unity
     public override void Start()
     {
         base.Start();
         enemyPoints = 20;
     }
     
+    // IDamageable Interface
     public void OnHit()
-    { 
+    {
         if (isDestroyed)
         {
             return;
         }
         isDestroyed = true;
-        // Debug.Log("CRAB: Object destroyed");
+        InvokeOnEnemyDied(enemyPoints);
         Destroy(gameObject);
-        scoreDisplay.AddPoints(enemyPoints);
     }
 }
