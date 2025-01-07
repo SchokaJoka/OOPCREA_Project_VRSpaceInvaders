@@ -9,14 +9,15 @@ public class PlayerShip : MonoBehaviour, IDamageable
 {
     public float playerSpeed = 10f;
     private float rotationSpeed = 50f;
+    
     public float horizontalInput;
-    public int maxPlayerLifes = 3;
-    private int currentPlayerLifes;
     private Quaternion targetRotation;
     
+    private int maxPlayerLifes = 3;
+    private int currentPlayerLifes;
+   
     public GameObject ship;
     
-    public ScoreDisplay scoreDisplay;
     public PlayerHealthDisplay playerHealthDisplay;
     
     public GameObject projectilePrefab;
@@ -25,24 +26,18 @@ public class PlayerShip : MonoBehaviour, IDamageable
     
     void Start()
     {
-        if (!scoreDisplay)
-        {
-            Debug.LogError("PlayerShip.cs: scoreDisplay Not Found");
-        }
+        currentPlayerLifes = maxPlayerLifes;
+        playerHealthDisplay = FindObjectOfType<PlayerHealthDisplay>();
+        playerHealthDisplay.UpdateHealthDisplay(currentPlayerLifes);
+     
         if (!playerHealthDisplay)
         {
             Debug.LogError("PlayerShip.cs: PlayerHealthDisplay Not Found");
         }
-
         if (!ship)
         {
             Debug.LogError("PlayerShip.cs: Shipmodel Not Found");
         }
-        
-        currentPlayerLifes = maxPlayerLifes;
-        playerHealthDisplay.UpdateHealthDisplay(currentPlayerLifes);
-        scoreDisplay = FindObjectOfType<ScoreDisplay>();
-        playerHealthDisplay = FindObjectOfType<PlayerHealthDisplay>();
     }
     void Update()
     {
@@ -83,12 +78,15 @@ public class PlayerShip : MonoBehaviour, IDamageable
             Destroy(gameObject);
         }
     }
-
-
-
+    
     public int GetCurrentPlayerLifes()
     {
         return currentPlayerLifes;
+    }
+
+    public int GetMaxPlayerLifes()
+    {
+        return maxPlayerLifes;
     }
 }
 

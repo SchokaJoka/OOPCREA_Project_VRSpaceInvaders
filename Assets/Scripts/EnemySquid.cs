@@ -1,9 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemySquid : EnemyArmy, IDamageable
 {
+    
     
     // Start is called before the first frame update
     public override void Start()
@@ -19,8 +21,7 @@ public class EnemySquid : EnemyArmy, IDamageable
             return;
         }
         isDestroyed = true;
-        // Debug.Log("SQUID: Object destroyed");
+        InvokeOnEnemyDied(enemyPoints);
         Destroy(gameObject);
-        scoreDisplay.AddPoints(enemyPoints);
     }
 }

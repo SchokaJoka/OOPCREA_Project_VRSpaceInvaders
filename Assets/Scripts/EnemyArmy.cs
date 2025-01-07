@@ -8,8 +8,9 @@ public class EnemyArmy : MonoBehaviour
     protected bool isDestroyed = false;
     protected int enemyPoints;
     private EnemyRowMovement rowMovement;
-    protected ScoreDisplay scoreDisplay;
-
+    protected static ScoreDisplay scoreDisplay;
+    public static event Action OnEnemyDied;
+    
     public virtual void Start()
     {
         rowMovement = GetComponentInParent<EnemyRowMovement>();
@@ -25,7 +26,7 @@ public class EnemyArmy : MonoBehaviour
         }
     }
 
-    protected void OnWallHit()
+    private void OnWallHit()
     {
         if (rowMovement != null)
         {
@@ -44,4 +45,11 @@ public class EnemyArmy : MonoBehaviour
             OnWallHit();
         }
     }
+    
+    protected void InvokeOnEnemyDied(int points)
+    {
+        scoreDisplay.AddPoints(points);
+        OnEnemyDied?.Invoke();
+    }
+
 }

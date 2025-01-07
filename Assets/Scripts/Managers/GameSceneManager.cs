@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using UnityEngine.InputSystem.HID;
 //using Meta.XR.ImmersiveDebugger.UserInterface.Generic;
 using UnityEngine.UI;
@@ -59,6 +60,7 @@ public class GameSceneManager : MonoBehaviour
         {
             FindBackButton();
         }
+        GameManager.CheckNumbersOfEnemies();
     }
 
     private void FindPlayButton()
@@ -122,6 +124,7 @@ public class GameSceneManager : MonoBehaviour
         SceneManager.LoadScene(GAME_OVER_SCENE, LoadSceneMode.Single);
     }
     
+    // Game does only end, when Player Looses (We don't need WinScene)
     public void LoadWinScene()
     {
         SceneManager.LoadScene(WIN_SCENE, LoadSceneMode.Single);

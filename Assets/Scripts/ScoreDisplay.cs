@@ -6,8 +6,6 @@ using TMPro;
 
 public class ScoreDisplay : MonoBehaviour
 {
-    public static event Action<int> OnScoreChanged;
-    
     public TextMeshPro scoreText;
     private int playerScore = 0;
     
@@ -15,12 +13,11 @@ public class ScoreDisplay : MonoBehaviour
     {
         UpdateScoreText();
     }
-    
-    public void AddPoints (int points)
+
+    public void AddPoints (int addPoints)
     {
-        playerScore += points;
+        playerScore += addPoints;
         UpdateScoreText();
-        OnScoreChanged?.Invoke(playerScore);
     }
 
     void UpdateScoreText ()

@@ -1,13 +1,16 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
-    
-    public int winScore = 900;
+    public static int numbersOfEnemies;
+    public static int currentNumbersOfEnemies;
+    public int playerScore;
+    public int playerHealth;
 
     private void Awake()
     {
@@ -23,29 +26,41 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        ScoreDisplay.OnScoreChanged += CheckWinCondition;
+        EnemyArmy.OnEnemyDied += CheckRestartCondition;
         PlayerShip.OnHealthChanged += CheckLooseCondition;
+        CheckNumbersOfEnemies();
     }
 
     private void OnDestroy()
     {
-        ScoreDisplay.OnScoreChanged -= CheckWinCondition;
+        EnemyArmy.OnEnemyDied -= CheckRestartCondition;
         PlayerShip.OnHealthChanged -= CheckLooseCondition;
     }
     
-    private void CheckWinCondition(int currentScore)
+    private void CheckRestartCondition()
     {
-        if (currentScore >= winScore)
+        int health = playerShip.GetCurrentPlayerLifes();
+        currentNumbersOfEnemies--;
+        if (currentNumbersOfEnemies <= 0)
         {
-            GameSceneManager.Instance.LoadWinScene();
+            GameSceneManager.Instance.LoadMainScene();
+            
         }
     }
     
-    private void CheckLooseCondition(int currentPlayerLifes)
+    private static void CheckLooseCondition(int currentPlayerLifes)
     {
         if (currentPlayerLifes <= 0)
         {
             GameSceneManager.Instance.LoadGameOverScene();
         }
+    }
+
+    public static void CheckNumbersOfEnemies()
+    {
+        numbersOfEnemies = FindObjectsOfType<EnemyShooter>().Length;
+        Debug.Log($"GameManager.cs: Found {numbersOfEnemies} Enemys!");
+        currentNumbersOfEnemies = numbersOfEnemies;
+
     }
 }
