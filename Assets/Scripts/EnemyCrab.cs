@@ -6,11 +6,12 @@ public class EnemyCrab : EnemyArmy, IDamageable
 {
     
     // Start is called before the first frame update
-    void Start()
+    public override void Start()
     {
-        CheckComponents();
+        base.Start();
+        enemyPoints = 20;
     }
-
+    
     public void OnHit()
     { 
         if (isDestroyed)
@@ -18,16 +19,8 @@ public class EnemyCrab : EnemyArmy, IDamageable
             return;
         }
         isDestroyed = true;
-        Debug.Log("CRAB: Object destroyed");
+        // Debug.Log("CRAB: Object destroyed");
         Destroy(gameObject);
-        // scoreDisplay.AddPoints(20);
-    }
-    
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Border"))
-        {
-            base.OnWallHit();
-        }
+        scoreDisplay.AddPoints(enemyPoints);
     }
 }

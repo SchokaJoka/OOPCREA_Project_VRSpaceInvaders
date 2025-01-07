@@ -8,6 +8,13 @@ public class Shield : MonoBehaviour, IDamageable
     private Material material;
     [SerializeField]
     private int shieldLives = 10;
+    
+    [SerializeField]
+    private Color fullHealthColor = Color.white; // Starting color at full health
+    [SerializeField]
+    private Color lowHealthColor = Color.red;  // Color when nearly destroyed
+
+    private int maxShieldLives;
 
     void Start()
     {
@@ -17,44 +24,30 @@ public class Shield : MonoBehaviour, IDamageable
         {
             Debug.LogError("Shield.cs: material Not Found");
         }
+        
+        maxShieldLives = shieldLives;
+        UpdateShieldColor();
     }
 
-
-    private void ChangeMaterialColor(int lives)
+    private void UpdateShieldColor()
     {
-        switch (lives)
-        {
-            case 10:
-            {
-                material.color = Color.blue;
-                break;
-            }
-            case 9:
-            {
-                material.color = Color.red;
-                break;
-            }
-            case 8:
-            {
-                material.color = Color.green;
-                break;
-            }
-            default:
-            {
-                material.color = Color.white;
-                break;
-            }
-        }
+        // Calculate the percentage of health remaining
+        float healthPercentage = (float)shieldLives / maxShieldLives;
+        
+        // Lerp between the low health color and full health color based on remaining health
+        Color newColor = Color.Lerp(lowHealthColor, fullHealthColor, healthPercentage);
+        
+        material.color = newColor;
     }
+
     public void OnHit()
     {
         shieldLives--;
-        if (shieldLives == 0)
+        if (shieldLives <= 0)
         {
             Destroy(gameObject);
+            return;
         }
-
-        ChangeMaterialColor(shieldLives);
-
+        UpdateShieldColor();
     }
 }

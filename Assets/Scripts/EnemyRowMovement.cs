@@ -3,21 +3,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyMovement : MonoBehaviour
+public class EnemyRowMovement : MonoBehaviour
 {
     private float moveDistance = 1f;
     private float moveInterval = 1f;
-   
+    private float moveDownDistance = 1f;
     public float startDelay;
+    
     private bool isAlive = true;
     
-    public EnemyMovementTop enemyMovementTop;
+    private bool directionRightTemp;
+    private bool movingRight;
     
     void Start()
     { 
+        StartCoroutine(TempValueRoutine());
         StartCoroutine(StartDelayRoutine());
     }
-    
+
+
+    private IEnumerator TempValueRoutine()
+    {
+        while (isAlive)
+        {
+            directionRightTemp = movingRight;
+            yield return new WaitForSeconds(moveInterval);
+        }
+    }
     private IEnumerator StartDelayRoutine()
     {
         yield return new WaitForSeconds(startDelay);
@@ -35,7 +47,7 @@ public class EnemyMovement : MonoBehaviour
     
     private void Move()
     {
-        if (enemyMovementTop.movingRight)
+        if (directionRightTemp)
         {
             transform.Translate(Vector2.right * moveDistance);
         }
@@ -43,5 +55,11 @@ public class EnemyMovement : MonoBehaviour
         {
             transform.Translate(Vector2.left * moveDistance);
         }
+    }
+    
+    public void MoveDown()
+    {
+        transform.Translate(Vector3.back * moveDownDistance);
+        movingRight = !movingRight;
     }
 }

@@ -11,7 +11,7 @@ public class PlayerShip : MonoBehaviour, IDamageable
     private float rotationSpeed = 50f;
     public float horizontalInput;
     public int maxPlayerLifes = 3;
-    public int currentPlayerLifes;
+    private int currentPlayerLifes;
     private Quaternion targetRotation;
     
     public GameObject ship;
@@ -20,6 +20,8 @@ public class PlayerShip : MonoBehaviour, IDamageable
     public PlayerHealthDisplay playerHealthDisplay;
     
     public GameObject projectilePrefab;
+    
+    public static event Action<int> OnHealthChanged;
     
     void Start()
     {
@@ -38,7 +40,7 @@ public class PlayerShip : MonoBehaviour, IDamageable
         }
         
         currentPlayerLifes = maxPlayerLifes;
-        playerHealthDisplay.UpdateHealthDisplay();
+        playerHealthDisplay.UpdateHealthDisplay(currentPlayerLifes);
         scoreDisplay = FindObjectOfType<ScoreDisplay>();
         playerHealthDisplay = FindObjectOfType<PlayerHealthDisplay>();
     }
@@ -72,13 +74,13 @@ public class PlayerShip : MonoBehaviour, IDamageable
 
     public void OnHit()
     {
-        Debug.Log("Player took damage");
         currentPlayerLifes--;
-        playerHealthDisplay.UpdateHealthDisplay();
-        if (currentPlayerLifes == 0)
+        OnHealthChanged?.Invoke(currentPlayerLifes);
+        playerHealthDisplay.UpdateHealthDisplay(currentPlayerLifes);
+        
+        if (currentPlayerLifes <= 0)
         {
             Destroy(gameObject);
-            Debug.Log("Game Over");
         }
     }
 

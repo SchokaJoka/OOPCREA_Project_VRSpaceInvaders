@@ -5,35 +5,43 @@ using UnityEngine;
 
 public class EnemyArmy : MonoBehaviour
 {
-    // public ScoreDisplay scoreDisplay;
     protected bool isDestroyed = false;
-    public EnemyMovementTop enemyMovementTop;
+    protected int enemyPoints;
+    private EnemyRowMovement rowMovement;
+    protected ScoreDisplay scoreDisplay;
 
-    void Start()
+    public virtual void Start()
     {
-        enemyMovementTop = GetComponent<EnemyMovementTop>();
-        if (!enemyMovementTop)
-        {
-            Debug.LogWarning("EnemyArmy.cs: enemyMovementTop not found!");
-        }
+        rowMovement = GetComponentInParent<EnemyRowMovement>();
+        scoreDisplay = FindObjectOfType<ScoreDisplay>();
 
+        if (!rowMovement)
+        {
+            Debug.LogWarning("EnemyArmy.cs: rowMovement not found!");
+        }
+        if (!scoreDisplay)
+        {
+            Debug.LogWarning("EnemyArmy.cs: scoreDisplay not found!");
+        }
     }
 
     protected void OnWallHit()
     {
-        enemyMovementTop.MoveDown();
-    }
-    
-    public void CheckComponents()
-    {
-        /*
-        scoreDisplay = GameObject.Find("ScoreDisplay").GetComponent<ScoreDisplay>();
-        if (!scoreDisplay)
+        if (rowMovement != null)
         {
-            Debug.LogError("EnemyOctopus.cs: scoreDisplay Not Found");
+            rowMovement.MoveDown();
         }
-        */
+        else
+        {
+            Debug.LogError("EnemyArmy.cs: Tried to move down but rowMovement is null!");
+        }
     }
     
-
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Border"))
+        {
+            OnWallHit();
+        }
+    }
 }

@@ -275,7 +275,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4af8f4540e9d89841ab543ed539d845d, type: 2}
+  - {fileID: 2100000, guid: c142e1c4de2ef374e969f58cffdf6354, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -620,7 +620,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startDelay: 0.1
-  enemyMovementTop: {fileID: 1735005329}
 --- !u!1001 &120195582
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2686,7 +2685,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startDelay: 0
-  enemyMovementTop: {fileID: 1735005329}
 --- !u!1 &810997010
 GameObject:
   m_ObjectHideFlags: 0
@@ -2748,7 +2746,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4af8f4540e9d89841ab543ed539d845d, type: 2}
+  - {fileID: 2100000, guid: c142e1c4de2ef374e969f58cffdf6354, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2920,7 +2918,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startDelay: 0.2
-  enemyMovementTop: {fileID: 1735005329}
 --- !u!4 &919144831 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 835044159693170865, guid: c65770b8ed3a14d5a97ab63be9ed4503, type: 3}
@@ -3053,7 +3050,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startDelay: 0.4
-  enemyMovementTop: {fileID: 1735005329}
 --- !u!4 &1007435737 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8852441756683994842, guid: edfdcbbf9db9b4fc9bbee3fb7fc9d00c, type: 3}
@@ -3318,9 +3314,8 @@ MonoBehaviour:
   - {fileID: 1329789687}
   - {fileID: 810997010}
   - {fileID: 47397311}
-  fullHealthMaterial: {fileID: 2100000, guid: 4af8f4540e9d89841ab543ed539d845d, type: 2}
+  fullHealthMaterial: {fileID: 2100000, guid: c142e1c4de2ef374e969f58cffdf6354, type: 2}
   emptyHealthMaterial: {fileID: 2100000, guid: a89603ceef578a946b36a29f0c8f9fde, type: 2}
-  playerShip: {fileID: 0}
 --- !u!4 &1069749066
 Transform:
   m_ObjectHideFlags: 0
@@ -3542,7 +3537,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startDelay: 0.3
-  enemyMovementTop: {fileID: 1735005329}
 --- !u!4 &1118376485 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 835044159693170865, guid: c65770b8ed3a14d5a97ab63be9ed4503, type: 3}
@@ -4238,7 +4232,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4af8f4540e9d89841ab543ed539d845d, type: 2}
+  - {fileID: 2100000, guid: c142e1c4de2ef374e969f58cffdf6354, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5497,8 +5491,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1735005327}
-  - component: {fileID: 1735005328}
-  - component: {fileID: 1735005329}
   m_Layer: 0
   m_Name: Army
   m_TagString: Enemy
@@ -5526,32 +5518,6 @@ Transform:
   - {fileID: 994327500}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1735005328
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1735005326}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef93693e07fa144e3a03e280e8dd4376, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyMovementTop: {fileID: 0}
---- !u!114 &1735005329
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1735005326}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb6cfe52013915d4ab0cf59f918bd5cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movingRight: 1
 --- !u!4 &1735284842 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 835044159693170865, guid: c65770b8ed3a14d5a97ab63be9ed4503, type: 3}

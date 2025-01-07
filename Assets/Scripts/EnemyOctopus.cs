@@ -6,9 +6,10 @@ public class EnemyOctopus : EnemyArmy, IDamageable
 {
     
     // Start is called before the first frame update
-    void Start()
+    public override void Start()
     {
-        CheckComponents();
+        base.Start();
+        enemyPoints = 10;
     }
     
     public void OnHit()
@@ -18,16 +19,8 @@ public class EnemyOctopus : EnemyArmy, IDamageable
             return;
         }
         isDestroyed = true;
-        Debug.Log("OCTOPUS: Object destroyed");
+        // Debug.Log("OCTOPUS: Object destroyed");
         Destroy(gameObject);
-        // scoreDisplay.AddPoints(10);
-    }
-    
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Border"))
-        {
-            base.OnWallHit();
-        }
+       scoreDisplay.AddPoints(enemyPoints);
     }
 }

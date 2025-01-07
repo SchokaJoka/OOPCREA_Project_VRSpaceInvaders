@@ -6,11 +6,12 @@ public class EnemySquid : EnemyArmy, IDamageable
 {
     
     // Start is called before the first frame update
-    void Start()
+    public override void Start()
     {
-        CheckComponents();
+        base.Start();
+        enemyPoints = 30;
     }
-
+    
     public void OnHit()
     {
         if (isDestroyed)
@@ -18,16 +19,8 @@ public class EnemySquid : EnemyArmy, IDamageable
             return;
         }
         isDestroyed = true;
-        Debug.Log("SQUID: Object destroyed");
+        // Debug.Log("SQUID: Object destroyed");
         Destroy(gameObject);
-        // scoreDisplay.AddPoints(30);
-    }
-    
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Border"))
-        {
-            base.OnWallHit();
-        }
+        scoreDisplay.AddPoints(enemyPoints);
     }
 }

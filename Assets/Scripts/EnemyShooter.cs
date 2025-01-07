@@ -2,28 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyShooter : EnemyArmy
+public class EnemyShooter : MonoBehaviour
 {
     public GameObject enemyProjectilePrefab;
     
-    public float minShootInterval = 3.0f; // Minimum time between shots
-    public float maxShootInterval = 5.0f; // Maximum time between shots
+    public float minShootInterval; // Minimum time between shots
+    public float maxShootInterval; // Maximum time between shots
     
     private float shootTimer = 0f;
     private float shootInterval;
     
     void Start()
     {
+        minShootInterval = Random.Range(3f, 7f);
+        maxShootInterval = Random.Range(10f, 20f);
         //Randomize the shoot interval for each enemy
         shootInterval = Random.Range(minShootInterval, maxShootInterval);
     }
     
     void Update()
     {
-        // Update the timer
         shootTimer += Time.deltaTime;
 
-        // Check if it's time to shoot and no enemy is in front
         if (shootTimer >= shootInterval)
         {
             //Raycast check before shooting

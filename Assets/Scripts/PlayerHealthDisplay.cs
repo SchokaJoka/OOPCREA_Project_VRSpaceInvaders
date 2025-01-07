@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,26 +10,20 @@ public class PlayerHealthDisplay : MonoBehaviour
     public Material fullHealthMaterial;
     public Material emptyHealthMaterial;
     
-    public PlayerShip playerShip;
-
     
     
     // Start is called before the first frame update
     void Start()
     {
-        playerShip = FindObjectOfType<PlayerShip>();
-        if (!playerShip)
-        {
-            Debug.LogError("PlayerHealthDisplay.cs: PlayerShip Not Found");
-        }
+        
     }
 
     // Set the health icons to the current Lifes
-    public void UpdateHealthDisplay()
+    public void UpdateHealthDisplay(int playerHealth)
     {
         for (int i = 0; i < healthObjects.Length; i++)
         {
-            if (i < playerShip.GetCurrentPlayerLifes())
+            if (i < playerHealth)
             {
                 healthObjects[i].GetComponent<Renderer>().material = fullHealthMaterial;
             }

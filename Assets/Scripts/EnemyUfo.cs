@@ -6,9 +6,10 @@ public class EnemyUfo : EnemyArmy, IDamageable
 {
     
     // Start is called before the first frame update
-    void Start()
+    public override void Start()
     {
-        CheckComponents();
+        base.Start();
+        enemyPoints = 100;
     }
     
     public void OnHit()
@@ -16,13 +17,5 @@ public class EnemyUfo : EnemyArmy, IDamageable
         Debug.Log("UFO: Object destroyed");
         Destroy(gameObject);
         // Add Score randomizer for UFO
-    }
-    
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Border"))
-        {
-            base.OnWallHit();
-        }
     }
 }

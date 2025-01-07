@@ -24,11 +24,13 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         ScoreDisplay.OnScoreChanged += CheckWinCondition;
+        PlayerShip.OnHealthChanged += CheckLooseCondition;
     }
 
     private void OnDestroy()
     {
         ScoreDisplay.OnScoreChanged -= CheckWinCondition;
+        PlayerShip.OnHealthChanged -= CheckLooseCondition;
     }
     
     private void CheckWinCondition(int currentScore)
@@ -36,6 +38,14 @@ public class GameManager : MonoBehaviour
         if (currentScore >= winScore)
         {
             GameSceneManager.Instance.LoadWinScene();
+        }
+    }
+    
+    private void CheckLooseCondition(int currentPlayerLifes)
+    {
+        if (currentPlayerLifes <= 0)
+        {
+            GameSceneManager.Instance.LoadGameOverScene();
         }
     }
 }
