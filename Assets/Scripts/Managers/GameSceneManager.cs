@@ -14,16 +14,15 @@ public class GameSceneManager : MonoBehaviour
 {
     public static GameSceneManager Instance { get; private set; }
     
-    // Variables
+    // Scene Names
     private readonly string START_SCENE = "Start";
     private readonly string MAIN_SCENE = "Main";
     private readonly string GAME_OVER_SCENE = "GameOver";
-    private readonly string GAME_OVER_SCENE_NEW = "GameOverNew";
     private readonly string WIN_SCENE = "Win";
     private readonly string CONTROLS_SCENE = "Controls";
     private readonly string POINT_SYSTEM_SCENE = "PointSystem";
 
-    // Components, References
+    // Buttons
     public Button playButton;
     public Button controlsButton;
     public Button pointsButton;
@@ -31,34 +30,25 @@ public class GameSceneManager : MonoBehaviour
     public Button playAgainButton;
     public Button exitButton;
     
-    // Unity
     public void Awake()
     {
+        // Ensure that there is only one GameSceneManager
         if (Instance && Instance != this)
         {
             Destroy(gameObject);
             return;
         }
-        
         Instance = this;
+        
         DontDestroyOnLoad(gameObject);
         
         SceneManager.sceneLoaded += OnSceneLoaded;
         
+        // Set the Start Scene to be always the first Scene
         string currentScene = SceneManager.GetActiveScene().name;
         if (currentScene != START_SCENE)
         {
             SceneManager.LoadScene(START_SCENE, LoadSceneMode.Single);
-        }
-    }
-    
-    void Update()
-    {
-        string currentScene = SceneManager.GetActiveScene().name;
-
-        if (currentScene == START_SCENE && Input.GetKeyDown(KeyCode.Space))
-        {
-            LoadMainScene();
         }
     }
     
@@ -67,7 +57,7 @@ public class GameSceneManager : MonoBehaviour
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
-    // Methods
+    // Loading Buttons for each time a Scene is loaded
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         if (scene.name == START_SCENE)
@@ -80,7 +70,7 @@ public class GameSceneManager : MonoBehaviour
         {
             FindBackButton();
         }
-        else if (scene.name == GAME_OVER_SCENE || scene.name == GAME_OVER_SCENE_NEW || scene.name == WIN_SCENE)
+        else if (scene.name == GAME_OVER_SCENE || scene.name == WIN_SCENE)
         {
             FindPlayAgainButton();
             FindExitButton();
@@ -90,6 +80,8 @@ public class GameSceneManager : MonoBehaviour
             GameManager.CheckNumbersOfEnemies();
         }
     }
+    
+    // Button Finders
     private void FindPlayButton()
     {
         playButton = GameObject.Find("Play").GetComponent<Button>();
@@ -151,10 +143,6 @@ public class GameSceneManager : MonoBehaviour
     public void LoadGameOverScene()
     {
         SceneManager.LoadScene(GAME_OVER_SCENE, LoadSceneMode.Single);
-    }
-    public void LoadGameOverNewScene()
-    {
-        SceneManager.LoadScene(GAME_OVER_SCENE_NEW, LoadSceneMode.Single);
     }
     public void LoadWinScene()
     {

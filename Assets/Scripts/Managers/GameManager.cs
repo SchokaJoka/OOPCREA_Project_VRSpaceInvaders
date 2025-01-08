@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
         if (currentPlayerLifes <= 0)
         {
             //GameSceneManager.Instance.LoadGameOverScene();
-            GameSceneManager.Instance.LoadGameOverNewScene();
+            GameSceneManager.Instance.LoadGameOverScene();
         }
     }
     public static void CheckNumbersOfEnemies()

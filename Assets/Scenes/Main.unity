@@ -3851,6 +3851,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 476746801}
     - target: {fileID: 8217422453627828787, guid: 8be4b1f6e8156462eb1e44a56a98e25a, type: 3}
+      propertyPath: cooldownDuration
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8217422453627828787, guid: 8be4b1f6e8156462eb1e44a56a98e25a, type: 3}
       propertyPath: playerHealthDisplay
       value: 
       objectReference: {fileID: 1069749065}

@@ -12,6 +12,9 @@ public class PlayerShip : MonoBehaviour, IDamageable
     private int maxPlayerLifes = 3;
     private int tempPlayerLifes;
     private int currentPlayerLifes;
+    private float lastShotTime;
+    [SerializeField] private float cooldownDuration = 0.5f;
+    
    
     public float horizontalInput;
     private Quaternion targetRotation;
@@ -66,9 +69,10 @@ public class PlayerShip : MonoBehaviour, IDamageable
         ship.transform.rotation = Quaternion.Slerp(ship.transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
 
         
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(Input.GetKeyDown(KeyCode.Space) && Time.time >= lastShotTime + cooldownDuration)
         {
             FireProjectile();
+            lastShotTime = Time.time;
         }
     }
     void FireProjectile()
