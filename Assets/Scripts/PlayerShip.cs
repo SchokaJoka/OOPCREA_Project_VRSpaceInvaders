@@ -9,8 +9,6 @@ public class PlayerShip : MonoBehaviour, IDamageable
     // Variables
     private float playerSpeed = 10f;
     private float rotationSpeed = 50f;
-    private int maxPlayerLifes = 3;
-    private int tempPlayerLifes;
     private int currentPlayerLifes;
     private float lastShotTime;
     [SerializeField] private float cooldownDuration = 0.5f;
@@ -32,16 +30,8 @@ public class PlayerShip : MonoBehaviour, IDamageable
     {
         // Initializing References
         CheckComponents();
-
-        if (tempPlayerLifes == 0)
-        {
-            currentPlayerLifes = maxPlayerLifes;
-        }
-        else
-        {
-            currentPlayerLifes = tempPlayerLifes;
-        }
-
+        
+        currentPlayerLifes = GameManager.Instance.GetPersistentPlayerLives();
         playerHealthDisplay.UpdateHealthDisplay(currentPlayerLifes);
     }
     void Update()
@@ -98,16 +88,10 @@ public class PlayerShip : MonoBehaviour, IDamageable
             Debug.LogError("PlayerShip.cs: projectilePrefab not found!");
         }
     }
-    
-    // Use for Restart Cache (Draft)
     public int GetCurrentPlayerLifes()
     {
         return currentPlayerLifes;
     }
-    // Use for restart Cache (Draft)
-    public void SetTempPlayerLifes(int playerLifes)
-    {
-        tempPlayerLifes = playerLifes;
-    }
+
 }
 

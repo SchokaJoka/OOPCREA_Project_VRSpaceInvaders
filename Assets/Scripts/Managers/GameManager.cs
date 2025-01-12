@@ -9,8 +9,11 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
     
     // Variables
-    private static int numbersOfEnemies;
-    private static int currentNumbersOfEnemies;
+    private int numbersOfEnemies;
+    private int currentNumbersOfEnemies;
+    
+    private int persistentScore = 0;
+    private int persistentPlayerLives = 3;
 
     // Unity
     private void Awake()
@@ -30,33 +33,35 @@ public class GameManager : MonoBehaviour
     }
     
     // Methods
-    private static void CheckRestartCondition()
+    private void CheckRestartCondition()
     {
         currentNumbersOfEnemies--;
         if (0 >= currentNumbersOfEnemies)
         {
-            GameSceneManager.Instance.LoadMainScene();
+            ScoreDisplay scoreDisplay = FindObjectOfType<ScoreDisplay>();
+            PlayerShip playerShip = FindObjectOfType<PlayerShip>();
+            if (scoreDisplay != null && playerShip != null)
+            {
+                persistentScore = scoreDisplay.GetCurrentScore();
+                persistentPlayerLives = playerShip.GetCurrentPlayerLifes();
+            }
             
-            // Store Player Lifes ?
-            // Store Player Score ?
+            GameSceneManager.Instance.LoadMainScene();
         }
-        
-        
     }
-    private static void CheckLooseCondition(int currentPlayerLifes)
+    private void CheckLooseCondition(int currentPlayerLifes)
     {
         if (currentPlayerLifes <= 0)
         {
-            //GameSceneManager.Instance.LoadGameOverScene();
+            ResetPersistentValues();
             GameSceneManager.Instance.LoadGameOverScene();
         }
     }
-    public static void CheckNumbersOfEnemies()
+    public void CheckNumbersOfEnemies()
     {
         numbersOfEnemies = FindObjectsOfType<EnemyShooter>().Length;
         Debug.Log($"GameManager.cs: Found {numbersOfEnemies} Enemys!");
         currentNumbersOfEnemies = numbersOfEnemies;
-
     }
     private void CheckForDuplicates()
     {
@@ -65,7 +70,21 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-        
         Instance = this;
+        
+        DontDestroyOnLoad(gameObject);
+    }
+    public int GetPersistentScore()
+    {
+        return persistentScore;
+    }
+    public int GetPersistentPlayerLives()
+    {
+        return persistentPlayerLives;
+    }
+    private void ResetPersistentValues()
+    {
+        persistentScore = 0;
+        persistentPlayerLives = 3;
     }
 }

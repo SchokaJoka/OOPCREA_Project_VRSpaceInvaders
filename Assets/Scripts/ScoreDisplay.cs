@@ -18,6 +18,7 @@ public class ScoreDisplay : MonoBehaviour
         // Initializing References, Components
         CheckComponents();
         
+        playerScore = GameManager.Instance.GetPersistentScore();
         UpdateScoreText();
     }
     
@@ -37,5 +38,9 @@ public class ScoreDisplay : MonoBehaviour
         {
             Debug.LogError("ScoreDisplay.cs: scoreText not found!");
         }
+    }
+    public int GetCurrentScore()
+    {
+        return playerScore;
     }
 }

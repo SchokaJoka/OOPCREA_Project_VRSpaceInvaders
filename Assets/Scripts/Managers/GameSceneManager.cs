@@ -77,7 +77,7 @@ public class GameSceneManager : MonoBehaviour
         }
         else if (scene.name == MAIN_SCENE)
         {
-            GameManager.CheckNumbersOfEnemies();
+            GameManager.Instance.CheckNumbersOfEnemies();
         }
     }
     
