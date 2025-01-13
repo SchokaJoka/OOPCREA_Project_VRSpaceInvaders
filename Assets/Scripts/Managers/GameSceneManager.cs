@@ -18,7 +18,6 @@ public class GameSceneManager : MonoBehaviour
     private readonly string START_SCENE = "Start";
     private readonly string MAIN_SCENE = "Main";
     private readonly string GAME_OVER_SCENE = "GameOver";
-    private readonly string WIN_SCENE = "Win";
     private readonly string CONTROLS_SCENE = "Controls";
     private readonly string POINT_SYSTEM_SCENE = "PointSystem";
 
@@ -70,7 +69,7 @@ public class GameSceneManager : MonoBehaviour
         {
             FindBackButton();
         }
-        else if (scene.name == GAME_OVER_SCENE || scene.name == WIN_SCENE)
+        else if (scene.name == GAME_OVER_SCENE)
         {
             FindPlayAgainButton();
             FindExitButton();
@@ -143,10 +142,6 @@ public class GameSceneManager : MonoBehaviour
     public void LoadGameOverScene()
     {
         SceneManager.LoadScene(GAME_OVER_SCENE, LoadSceneMode.Single);
-    }
-    public void LoadWinScene()
-    {
-        SceneManager.LoadScene(WIN_SCENE, LoadSceneMode.Single);
     }
     public void LoadControlsScene()
     {
