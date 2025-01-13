@@ -192,9 +192,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccd4bb98612c5284bb6df75998983750, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyProjectilePrefab: {fileID: 6060983005149107859, guid: a9e0b19bc88c38345bdb5d7cafdcdd23, type: 3}
-  minShootInterval: 0.5
-  maxShootInterval: 1.5
+  bulletPrefab: {fileID: 6060983005149107859, guid: f4161c825bd9947afb4667b7653747b2, type: 3}
 --- !u!1001 &3549945972518224311
 PrefabInstance:
   m_ObjectHideFlags: 0

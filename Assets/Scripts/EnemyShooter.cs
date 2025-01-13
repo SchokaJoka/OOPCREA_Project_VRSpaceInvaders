@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class EnemyShooter : MonoBehaviour
 {
@@ -9,7 +10,8 @@ public class EnemyShooter : MonoBehaviour
     private float shootInterval;
     
     // Components, References
-    public GameObject enemyProjectilePrefab;
+    [SerializeField]
+    private GameObject bulletPrefab;
     
     // Unity
     void Start()
@@ -36,12 +38,14 @@ public class EnemyShooter : MonoBehaviour
     }
     
     // Methods
-    public void FireProjectile()
+    private void FireProjectile()
     {
         Vector3 spawnPos = transform.position + transform.forward * -1.5f;
-        Instantiate(enemyProjectilePrefab, spawnPos, Quaternion.identity);
-        EnemyBullet bullet = enemyProjectilePrefab.GetComponent<EnemyBullet>();
-        bullet.moveDirection = Vector3.back; // Set the direction to move downwards
+        GameObject bulletInstance = Instantiate(bulletPrefab, spawnPos, Quaternion.identity);
+        Bullet bullet = bulletInstance.GetComponent<Bullet>();
+        bullet.SetMoveDirection(Vector3.back);
+        bullet.SetIsEnemyBullet(true);
+        bullet.SetMoveSpeed(10f);
     }
     private bool IsEnemyInFront()
     {
@@ -52,7 +56,7 @@ public class EnemyShooter : MonoBehaviour
         for (int i = -numberOfRays / 2; i <= numberOfRays / 2; i++)
         {
             // The Origin of each ray (offseting from the enemy' position)
-            Vector3 rayOrigin = transform.position + transform.right * i * raySpacing;
+            Vector3 rayOrigin = transform.position + transform.right * (i * raySpacing);
             // Set the direction to move downwards
             Vector3 rayDirection = -transform.forward;
 
