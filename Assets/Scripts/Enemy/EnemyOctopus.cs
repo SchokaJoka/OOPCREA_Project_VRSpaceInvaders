@@ -1,4 +1,4 @@
-public class EnemyOctopus : EnemyArmy
+public class EnemyOctopus : Enemy
 {
     // Unity
     public override void Start()

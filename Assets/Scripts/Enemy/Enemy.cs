@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class EnemyArmy : MonoBehaviour, IDamageable
+public class Enemy : MonoBehaviour, IDamageable
 {
     // Variables
     protected int enemyPoints;
@@ -39,7 +39,7 @@ public class EnemyArmy : MonoBehaviour, IDamageable
         }
         else
         {
-            Debug.LogError("EnemyArmy.cs: Tried to move down but rowMovement is null!");
+            Debug.LogError("Enemy.cs: Tried to move down but rowMovement is null!");
         }
     }
     protected static void InvokeOnEnemyDied(int points)
@@ -54,11 +54,11 @@ public class EnemyArmy : MonoBehaviour, IDamageable
 
         if (!rowMovement)
         {
-            Debug.LogWarning("EnemyArmy.cs: rowMovement not found!");
+            Debug.LogWarning("Enemy.cs: rowMovement not found!");
         }
         if (!scoreDisplay)
         {
-            Debug.LogWarning("EnemyArmy.cs: scoreDisplay not found!");
+            Debug.LogWarning("Enemy.cs: scoreDisplay not found!");
         }
     }
 

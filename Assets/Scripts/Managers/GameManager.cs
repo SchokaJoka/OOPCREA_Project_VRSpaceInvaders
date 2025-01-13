@@ -7,7 +7,6 @@ public class GameManager : MonoBehaviour
     // Variables
     private int numbersOfEnemies;
     private int currentNumbersOfEnemies;
-    
     private int persistentScore = 0;
     private int persistentPlayerLives = 3;
 
@@ -18,13 +17,13 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
-        EnemyArmy.OnEnemyDied += CheckRestartCondition;
+        Enemy.OnEnemyDied += CheckRestartCondition;
         PlayerShip.OnPlayerTookDamage += CheckLooseCondition;
         CheckNumbersOfEnemies();
     }
     private void OnDestroy()
     {
-        EnemyArmy.OnEnemyDied -= CheckRestartCondition;
+        Enemy.OnEnemyDied -= CheckRestartCondition;
         PlayerShip.OnPlayerTookDamage -= CheckLooseCondition;
     }
     
