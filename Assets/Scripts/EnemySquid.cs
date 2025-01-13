@@ -17,5 +17,6 @@ public class EnemySquid : EnemyArmy, IDamageable
         isDestroyed = true;
         InvokeOnEnemyDied(enemyPoints);
         Destroy(gameObject);
+        SoundManager.Instance.PlayHitSound();
     }
 }

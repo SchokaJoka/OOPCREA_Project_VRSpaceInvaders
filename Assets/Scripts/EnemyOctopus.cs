@@ -17,5 +17,6 @@ public class EnemyOctopus : EnemyArmy, IDamageable
         isDestroyed = true;
         InvokeOnEnemyDied(enemyPoints);
         Destroy(gameObject);
+        SoundManager.Instance.PlayHitSound();
     }
 }
