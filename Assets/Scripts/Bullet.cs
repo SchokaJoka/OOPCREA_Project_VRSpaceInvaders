@@ -1,16 +1,22 @@
+using System;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
     // Variables
-    public float moveSpeed = 30f;
     public float lifeTime = 5.0f;
+    private float moveSpeed = 30f;
+    private bool isEnemyBullet = false;
+    private Vector3 moveDirection = Vector3.forward; // Default direction is upwards
     
     // Unity
+    private void Start()
+    {
+        Destroy(gameObject, lifeTime);
+    }
     void Update()
     {
-        transform.Translate(0.0f, 0.0f, moveSpeed * Time.deltaTime);
-        Destroy(gameObject, lifeTime);
+        transform.Translate(moveDirection * (Time.deltaTime * moveSpeed));
     }
     
     // Collision Handling
@@ -18,8 +24,33 @@ public class Bullet : MonoBehaviour
     {
         if (other.gameObject.TryGetComponent(out IDamageable damageable))
         {
+            Debug.Log("Found IDamageable component");
+            if (isEnemyBullet)
+            {
+                Debug.Log("is Enemy Bullet = true");
+                // Ignore collision with other enemies
+                if (other.gameObject.CompareTag("Octopus") || other.gameObject.CompareTag("Crab") || other.gameObject.CompareTag("Squid"))
+                {
+                    Debug.Log("Ignoring collision with other enemy");
+                    return;
+                }
+            }
             damageable.OnHit();
             Destroy(gameObject);
         }
+    }
+    
+    // Methods
+    public void SetIsEnemyBullet(bool newIsEnemyBullet)
+    {
+        isEnemyBullet = newIsEnemyBullet;
+    }
+    public void SetMoveDirection(Vector3 newMoveDirection)
+    {
+        moveDirection = newMoveDirection;
+    }
+    public void SetMoveSpeed(float newMoveSpeed)
+    {
+        moveSpeed = newMoveSpeed; 
     }
 }

@@ -7,22 +7,10 @@ public class EnemyBullet : MonoBehaviour
     public float lifeTime = 5.0f;
     public Vector3 moveDirection = Vector3.forward; // Default direction is upwards
     
-    // Components, References
-    public ScoreDisplay scoreDisplay;
-    
     // Unity
     void Start()
     {
         Destroy(gameObject, lifeTime); // Can be changed, with a Box collider at the top of the screen, just a temp solution
-        
-        if (!scoreDisplay)
-        {
-            scoreDisplay = FindObjectOfType<ScoreDisplay>();
-            if (!scoreDisplay)
-            {
-                Debug.LogError("EnemyBullet.cs: scoreDisplay Not Found");
-            }
-        }
     }
     
     void Update()
