@@ -24,14 +24,11 @@ public class Bullet : MonoBehaviour
     {
         if (other.gameObject.TryGetComponent(out IDamageable damageable))
         {
-            Debug.Log("Found IDamageable component");
             if (isEnemyBullet)
             {
-                Debug.Log("is Enemy Bullet = true");
                 // Ignore collision with other enemies
                 if (other.gameObject.CompareTag("Octopus") || other.gameObject.CompareTag("Crab") || other.gameObject.CompareTag("Squid"))
                 {
-                    Debug.Log("Ignoring collision with other enemy");
                     return;
                 }
             }
