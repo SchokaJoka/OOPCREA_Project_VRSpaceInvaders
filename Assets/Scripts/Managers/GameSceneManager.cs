@@ -1,13 +1,5 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.SceneManagement;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using UnityEngine.InputSystem.HID;
-//using Meta.XR.ImmersiveDebugger.UserInterface.Generic;
 using UnityEngine.UI;
 
 public class GameSceneManager : MonoBehaviour
@@ -130,7 +122,7 @@ public class GameSceneManager : MonoBehaviour
         }
     }
     
-    // Scene Loader Methods
+    // Scene Loader
     public void LoadStartScene()
     {
         SceneManager.LoadScene(START_SCENE, LoadSceneMode.Single);
