@@ -459,6 +459,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1810888913110510834, guid: c65770b8ed3a14d5a97ab63be9ed4503, type: 3}
+      propertyPath: bulletPrefab
+      value: 
+      objectReference: {fileID: 6060983005149107859, guid: f4161c825bd9947afb4667b7653747b2, type: 3}
     - target: {fileID: 5601450588271111215, guid: c65770b8ed3a14d5a97ab63be9ed4503, type: 3}
       propertyPath: m_Name
       value: NormalEnemyCrab 4
