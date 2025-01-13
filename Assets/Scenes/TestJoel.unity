@@ -526,8 +526,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyProjectilePrefab: {fileID: 6060983005149107859, guid: a9e0b19bc88c38345bdb5d7cafdcdd23, type: 3}
-  minShootInterval: 0
-  maxShootInterval: 0
 --- !u!1 &1261347105
 GameObject:
   m_ObjectHideFlags: 0

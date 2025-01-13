@@ -60,6 +60,7 @@ public class PlayerShip : MonoBehaviour, IDamageable
         {
             FireProjectile();
             lastShotTime = Time.time;
+            SoundManager.Instance.PlayShootSound();
         }
     }
     void FireProjectile()
